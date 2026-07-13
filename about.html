@@ -4,14 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>关于我们与免责条款 - Tizitop 梯子拓扑</title>
-  <meta name="description" content="了解 Tizitop 梯子拓扑的建站理念。查看本博客关于科研加速、网络安全的免责声明与读者安全准则。">
+  <meta name="description" content="了解 Tizitop 梯子拓扑的建站理念。查看本博客关于学术网络安全、免责声明与读者用网守则。">
   
   <!-- CSS Stylesheet -->
   <link rel="stylesheet" href="css/main.css">
   <style>
     .about-grid {
       display: grid;
-      grid-template-columns: 8fr 4fr;
+      grid-template-columns: 8.5fr 3.5fr;
       gap: 32px;
       margin-top: 40px;
     }
@@ -23,26 +23,27 @@
     .about-content-card {
       background-color: var(--bg-secondary);
       border: 1px solid var(--border-color);
-      border-radius: var(--radius-lg);
-      padding: 40px;
-      box-shadow: var(--card-shadow);
+      border-radius: var(--radius-md);
+      padding: 32px;
       margin-bottom: 24px;
     }
     .about-h2 {
-      font-size: 1.5rem;
-      margin-bottom: 20px;
+      font-size: 1.25rem;
+      margin-bottom: 16px;
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 8px;
       color: var(--text-primary);
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 8px;
     }
     .about-h2 svg {
       color: var(--primary);
-      width: 24px;
-      height: 24px;
+      width: 20px;
+      height: 20px;
     }
     .about-text {
-      font-size: 1rem;
+      font-size: 0.95rem;
       line-height: 1.7;
       color: var(--text-secondary);
       margin-bottom: 16px;
@@ -50,51 +51,52 @@
     .safety-item-list {
       display: flex;
       flex-direction: column;
-      gap: 16px;
-      margin-top: 20px;
+      gap: 12px;
+      margin-top: 16px;
     }
     .safety-item {
       display: flex;
-      gap: 12px;
+      gap: 10px;
       background-color: var(--bg-tertiary);
-      padding: 16px;
-      border-radius: var(--radius-md);
+      padding: 12px 16px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border-color);
     }
     .safety-num {
-      width: 28px;
-      height: 28px;
+      width: 24px;
+      height: 24px;
       border-radius: 50%;
-      background: var(--primary-gradient);
+      background-color: var(--primary);
       color: #ffffff;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-weight: 800;
+      font-weight: 700;
       flex-shrink: 0;
+      font-size: 0.8rem;
     }
     .safety-info {
       display: flex;
       flex-direction: column;
-      gap: 4px;
+      gap: 2px;
     }
     .safety-title {
-      font-weight: 700;
+      font-weight: 600;
       color: var(--text-primary);
-      font-size: 0.95rem;
+      font-size: 0.9rem;
     }
     .safety-desc {
-      font-size: 0.85rem;
+      font-size: 0.8rem;
       color: var(--text-muted);
       line-height: 1.5;
     }
     .contact-widget {
       background-color: var(--bg-secondary);
       border: 1px solid var(--border-color);
-      border-radius: var(--radius-lg);
-      padding: 32px;
-      box-shadow: var(--card-shadow);
+      border-radius: var(--radius-md);
+      padding: 24px;
       position: sticky;
-      top: calc(var(--header-height) + 24px);
+      top: calc(var(--header-height) + 20px);
     }
   </style>
 </head>
@@ -103,17 +105,11 @@
   <header class="header">
     <div class="container">
       <a href="index.html" class="logo">
-        <div class="logo-icon">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="16 18 22 12 16 6"/>
-            <polyline points="8 6 2 12 8 18"/>
-          </svg>
-        </div>
-        <span>TiziTop<span class="gradient-text">拓扑</span></span>
+        <span>TiziTop</span> 拓扑
       </a>
       
       <nav class="nav-menu" id="navMenu">
-        <a href="index.html" class="nav-link">首页探索</a>
+        <a href="index.html" class="nav-link">首页</a>
         <a href="recommend.html" class="nav-link">梯子推荐</a>
         <a href="knowledge.html" class="nav-link">科普指南</a>
         <a href="about.html" class="nav-link active">关于我们</a>
@@ -124,7 +120,7 @@
           <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
           <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
         </button>
-        <a href="recommend.html" class="btn btn-primary">热门推荐</a>
+        <a href="recommend.html" class="btn btn-primary">实测推荐</a>
         <button class="hamburger" id="hamburger" aria-label="打开菜单">
           <span></span>
           <span></span>
@@ -135,20 +131,19 @@
   </header>
 
   <!-- Title Section -->
-  <section class="section-padding" style="padding-top: calc(var(--header-height) + 40px); background-color: var(--bg-tertiary);">
+  <section class="section-padding" style="padding-top: 40px; padding-bottom: 40px; background-color: var(--bg-tertiary);">
     <div class="container">
       <div class="section-header" style="margin-bottom: 0;">
-        <span class="section-tag">About TiziTop</span>
-        <h1 class="section-title" style="font-size: 2.75rem;">关于我们与免责条款</h1>
-        <p class="section-desc" style="max-width: 750px;">
-          TiziTop 梯子拓扑是一个面向开发者、学术科研人员及跨境电商的专业网络技术分享平台。
+        <h1 class="section-title" style="font-size: 2.20rem;">关于我们与免责条款</h1>
+        <p class="section-desc" style="max-width: 750px; margin-top: 8px;">
+          TiziTop 梯子拓扑是一个致力于技术中立、辅助跨境科研学术用网的网络安全博客。
         </p>
       </div>
     </div>
   </section>
 
   <!-- Grid Container -->
-  <main class="container section-padding" style="padding-top: 50px;">
+  <main class="container section-padding" style="padding-top: 40px;">
     <div class="about-grid">
       
       <!-- Left side: Main About Info -->
@@ -160,10 +155,10 @@
             我们的宗旨
           </h2>
           <p class="about-text">
-            在当前的全球数字化浪潮中，稳定的全球网络接入对于人工智能开发（如 OpenAI API、Claude 调用）、国际前沿科学文献检索（如 Google Scholar、IEEE 等）、跨国开源项目协作以及合法的跨国贸易至关重要。
+            全球网络访问对人工智能研发（如 OpenAI 接口调用）、科研文献检索（如 Google Scholar, IEEE 数据库）以及合法的跨国贸易沟通至关重要。
           </p>
           <p class="about-text">
-            TiziTop 的建站理念是<b>“客观、专业、安全”</b>。我们拒绝接受劣质机场的付费虚假测速推广，坚持独立实测，只为广大技术开发者与科研群体提供真实可靠的网络环境参考。
+            TiziTop 的建站理念是<b>“客观中立、安全防护”</b>。我们拒绝接受劣质或新开跑路商家的付费测速广告，坚持客观独立实测，只为您提供真实的网络环境数据参考。
           </p>
         </div>
 
@@ -171,34 +166,34 @@
         <div class="about-content-card">
           <h2 class="about-h2">
             <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
-            读者核心安全守则
+            安全上网准则
           </h2>
           <p class="about-text" style="margin-bottom: 0;">
-            跨境网络访问面临特殊的监管和技术环境，为了您的个人隐私与法律安全，我们建议在使用时严格遵守以下三条原则：
+            跨境网络访问受政策与技术环境双重制约，为了保障读者的隐私与法律安全，我们建议遵循以下几项基础原则：
           </p>
 
           <div class="safety-item-list">
             <div class="safety-item">
               <span class="safety-num">1</span>
               <div class="safety-info">
-                <span class="safety-title">学术与科研定位，不作敏感探讨</span>
-                <span class="safety-desc">请勿利用加速网络在境外任何论坛或社交软件发表涉及政治、敏感的言论。保持学术研究和工程实践本位。</span>
+                <span class="safety-title">定位学术科研，不谈敏感话题</span>
+                <span class="safety-desc">切勿利用代理网络在境外社交平台或论坛发表任何涉及敏感话题或政治的言论。</span>
               </div>
             </div>
 
             <div class="safety-item">
               <span class="safety-num">2</span>
               <div class="safety-info">
-                <span class="safety-title">防范个人账户与财产安全</span>
-                <span class="safety-desc">不要把翻墙软件节点共享给陌生人，避免被连带溯源；充值机场套餐尽量月付，不给个人网银留下过长周期的资金风险。</span>
+                <span class="safety-title">防范支付与个人账户安全</span>
+                <span class="safety-desc">选择可靠机场、尽量使用月付。不随意与陌生人共用代理线路，规避审查溯源风险。</span>
               </div>
             </div>
 
             <div class="safety-item">
               <span class="safety-num">3</span>
               <div class="safety-info">
-                <span class="safety-title">开启分流代理，避免国内服务异常</span>
-                <span class="safety-desc">始终将代理软件配置为“分流 (Rule) 模式”，这可以让网银等敏感软件直连国内网络，防止因 IP 异地变动导致支付工具风控冻结。</span>
+                <span class="safety-title">启用客户端内置分流规则</span>
+                <span class="safety-desc">保持客户端处于“规则分流 (Rule) 模式”，防止系统将国内常用服务（如银行、微信）识别为异常 IP 异地登录而弹窗锁定。</span>
               </div>
             </div>
           </div>
@@ -208,16 +203,16 @@
         <div class="about-content-card">
           <h2 class="about-h2" style="color: var(--danger);">
             <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="color: var(--danger);"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
-            学术与法律免责条款
+            法律免责条款
           </h2>
           <p class="about-text">
-            1. TiziTop 梯子拓扑是一个非商业性质的技术科普博客。本站<b>不售卖、不提供、不分发</b>任何网络代理节点与加速订阅产品。
+            1. TiziTop 梯子拓扑仅限网络加速技术科普。本站<b>不提供、不销售、不转发</b>任何有偿的网络代理订阅包及加速软硬件产品。
           </p>
           <p class="about-text">
-            2. 本站所展示的各类软件（如 Clash Verge 等）均源自 GitHub 官方开源社区发行版本，其著作权与使用风险由第三方开发者及用户自行承担，本站仅作使用指引和学术讨论。
+            2. 本博客科普的所有软件（如 Clash 等）均来自于其官方在 GitHub 上的开源包或通用包，著作权归其所属的个人或组织，一切使用风险与版权均由用户自行确认负责。
           </p>
           <p class="about-text">
-            3. 读者在使用代理网络时，必须完全遵守其所在国家及地区的法律法规。任何因读者自身违法使用网络加速技术而引起的行政、民事、刑事纠纷均与本站无关。
+            3. 请读者遵守当地网络安全法。凡利用本站技术文章内容而在当地引起任何纠纷者，本站不承担任何法律与附带连带责任。
           </p>
         </div>
       </section>
@@ -225,29 +220,29 @@
       <!-- Right side: Contact card -->
       <aside class="contact-sidebar">
         <div class="contact-widget">
-          <h3 class="widget-title">意见反馈与沟通</h3>
-          <p class="about-text" style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 20px;">
-            如果您发现我们的评测数据有误，或者对客户端教程有任何疑问与修改建议，欢迎通过以下官方渠道进行技术反馈。
+          <h3 class="widget-title">技术反馈与联系</h3>
+          <p class="about-text" style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 20px; line-height: 1.6;">
+            如果您发现我们的线路实测数据出现偏差，或者发现客户端下载包版本需要更新，欢迎随时通过官方反馈通道联系我们。
           </p>
           
-          <div style="display: flex; flex-direction: column; gap: 16px;">
-            <div style="display: flex; align-items: center; gap: 12px;">
-              <div style="width: 36px; height: 36px; border-radius: 50%; background-color: var(--bg-tertiary); display: flex; align-items: center; justify-content: center; color: var(--primary);">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          <div style="display: flex; flex-direction: column; gap: 12px;">
+            <div style="display: flex; align-items: center; gap: 10px;">
+              <div style="width: 32px; height: 32px; border-radius: var(--radius-sm); background-color: var(--bg-tertiary); display: flex; align-items: center; justify-content: center; color: var(--primary); border: 1px solid var(--border-color);">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
               </div>
               <div style="display: flex; flex-direction: column;">
-                <span style="font-size: 0.75rem; color: var(--text-muted); font-weight: 700;">电子邮件</span>
-                <span style="font-size: 0.85rem; color: var(--text-primary); font-weight: 600;">contact@tizitop.com</span>
+                <span style="font-size: 0.7rem; color: var(--text-muted); font-weight: 600;">电子邮件</span>
+                <span style="font-size: 0.85rem; color: var(--text-primary); font-weight: 500;">contact@tizitop.com</span>
               </div>
             </div>
 
-            <div style="display: flex; align-items: center; gap: 12px;">
-              <div style="width: 36px; height: 36px; border-radius: 50%; background-color: var(--bg-tertiary); display: flex; align-items: center; justify-content: center; color: var(--primary);">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+            <div style="display: flex; align-items: center; gap: 10px;">
+              <div style="width: 32px; height: 32px; border-radius: var(--radius-sm); background-color: var(--bg-tertiary); display: flex; align-items: center; justify-content: center; color: var(--primary); border: 1px solid var(--border-color);">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
               </div>
               <div style="display: flex; flex-direction: column;">
-                <span style="font-size: 0.75rem; color: var(--text-muted); font-weight: 700;">官方 Telegram</span>
-                <span style="font-size: 0.85rem; color: var(--text-primary); font-weight: 600;">@tizitop_official</span>
+                <span style="font-size: 0.7rem; color: var(--text-muted); font-weight: 600;">官方 Telegram</span>
+                <span style="font-size: 0.85rem; color: var(--text-primary); font-weight: 500;">@tizitop_official</span>
               </div>
             </div>
           </div>
@@ -262,24 +257,16 @@
     <div class="container">
       <div class="footer-grid">
         <div class="footer-col">
-          <a href="index.html" class="logo" style="margin-bottom: 12px;">
-            <div class="logo-icon">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="16 18 22 12 16 6"/>
-                <polyline points="8 6 2 12 8 18"/>
-              </svg>
-            </div>
-            <span>TiziTop<span class="gradient-text">拓扑</span></span>
-          </a>
+          <span class="logo" style="margin-bottom: 8px;">TiziTop <span>拓扑</span></span>
           <p class="footer-col-desc">
-            TiziTop 梯子拓扑是一个致力于普及网络技术、网络安全及跨境学术科研网络加速指南的独立博客。
+            TiziTop 梯子拓扑是一个致力于普及网络安全、科学用网常识与辅助跨境学术研究的技术科普博客。
           </p>
         </div>
 
         <div class="footer-col">
           <span class="footer-col-title">快速导航</span>
           <div class="footer-links">
-            <a href="index.html" class="footer-link">首页探索</a>
+            <a href="index.html" class="footer-link">首页</a>
             <a href="recommend.html" class="footer-link">梯子推荐</a>
             <a href="knowledge.html" class="footer-link">科普指南</a>
             <a href="about.html" class="footer-link">关于我们</a>
@@ -287,19 +274,19 @@
         </div>
 
         <div class="footer-col">
-          <span class="footer-col-title">常用教程</span>
+          <span class="footer-col-title">推荐教程</span>
           <div class="footer-links">
-            <a href="article.html" class="footer-link">Clash Verge 配置</a>
-            <a href="article.html" class="footer-link">Shadowrocket 导入</a>
-            <a href="article.html" class="footer-link">IPLC专线深度解析</a>
-            <a href="article.html" class="footer-link">ChatGPT 风控绕过</a>
+            <a href="article.html" class="footer-link">Clash Verge 配置教程</a>
+            <a href="article.html" class="footer-link">小火箭二维码配置</a>
+            <a href="article.html" class="footer-link">什么是 IPLC 物理专线</a>
+            <a href="article.html" class="footer-link">ChatGPT 原生双 ISP 解锁</a>
           </div>
         </div>
 
         <div class="footer-col">
-          <span class="footer-col-title">学术免责声明</span>
-          <p class="footer-col-desc" style="font-size: 0.8rem;">
-            本站发布的内容仅限用于跨境学术研究、软件工程开发、外贸商业沟通及个人合法科普学习。请广大读者遵守当地法律法规，切勿利用相关技术从事任何违法违规行为。
+          <span class="footer-col-title">科研学术免责声明</span>
+          <p class="footer-col-desc" style="font-size: 0.8rem; line-height: 1.5;">
+            本站内容仅用于软件工程开发、跨境学术文献检索、外贸商务交流等合法科研学习用途。请广大读者自觉遵守当地网络法律法规，切勿利用网络从事违法活动。
           </p>
         </div>
       </div>
