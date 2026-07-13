@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tizitop 梯子拓扑 | 2026 梯子机场推荐、Clash 教程与科学上网科普指南</title>
+  <meta name="description" content="Tizitop 梯子拓扑为您提供 2026 最新网络梯子与专线机场评测指南。深度科普 Clash Verge, Shadowrocket, Stash 使用配置，解析 IPLC/IEPL 物理专线与 BGP 中转，助您安全、高速访问 ChatGPT, YouTube 与 Netflix。">
+  <meta name="keywords" content="梯子推荐,机场推荐,Clash教程,科学上网,IPLC专线,小火箭订阅">
+  
+  <!-- CSS Stylesheet -->
+  <link rel="stylesheet" href="css/main.css">
+  
+  <!-- JSON-LD SEO Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "什么是科学上网机场？它与普通 VPN 有何区别？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "机场是指提供多个海外中转节点并打包成订阅链接的专属服务商，主要采用 Shadowsocks、Trojan、VLESS Hysteria 2 等防封锁协议。与传统 VPN（如 OpenVPN/L2TP）相比，机场节点更丰富，协议抗封锁能力极强，且通常允许用户自定义路由规则，实现国内直连、国外分流，速度和延迟表现更优异。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "什么是 IPLC 和 IEPL 专线？为什么它们在晚高峰不卡？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "IPLC（国际私用出租线路）和 IEPL（国际以太网专线）是两地之间的跨国物理专线。数据不经过公网网关（GFW），因此完全避开了防火墙的拦截和干扰。因为没有公网丢包与出口带宽挤占，无论晚高峰如何拥堵，专线网络都能保障极低延迟与零丢包的高速稳定连接。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "如何防止在购买机场或 VPN 时遭遇“跑路”？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "防范割韭菜或跑路的核心建议：1）坚持月付或季付，即便年付优惠巨大也不要轻易购买长期套餐；2）优先选择开业时间长达 2 年以上的骨灰级稳定大厂；3）关注其官方 Telegram 群组的活跃度和公告频率；4）避免购买价格低到不合常理的超低价‘全无限’套餐。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "为什么开启代理后仍然无法登录 ChatGPT？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "ChatGPT 拥有极其严格的 IP 欺诈风控机制。普通香港节点或低纯净度的公共数据中心机房 IP 会被直接阻断访问。解决此问题需确保代理客户端使用‘分流模式’，并选择新加坡、日本或美国等地区的原生住宅‘双 ISP’节点，以高纯净度住宅 IP 绕过风控。"
+        }
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="container">
+      <a href="index.html" class="logo">
+        <div class="logo-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="16 18 22 12 16 6"/>
+            <polyline points="8 6 2 12 8 18"/>
+          </svg>
+        </div>
+        <span>TiziTop<span class="gradient-text">拓扑</span></span>
+      </a>
+      
+      <nav class="nav-menu" id="navMenu">
+        <a href="index.html" class="nav-link active">首页探索</a>
+        <a href="recommend.html" class="nav-link">梯子推荐</a>
+        <a href="knowledge.html" class="nav-link">科普指南</a>
+        <a href="about.html" class="nav-link">关于我们</a>
+      </nav>
+      
+      <div class="nav-actions">
+        <button class="theme-toggle" id="themeToggle" aria-label="切换主题">
+          <!-- Moon Icon -->
+          <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+          </svg>
+          <!-- Sun Icon -->
+          <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5"/>
+            <line x1="12" y1="1" x2="12" y2="3"/>
+            <line x1="12" y1="21" x2="12" y2="23"/>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+            <line x1="1" y1="12" x2="3" y2="12"/>
+            <line x1="21" y1="12" x2="23" y2="12"/>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+          </svg>
+        </button>
+        <a href="recommend.html" class="btn btn-primary">热门推荐</a>
+        <button class="hamburger" id="hamburger" aria-label="打开菜单">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="bg-glow glow-primary"></div>
+    <div class="bg-glow glow-accent"></div>
+    <div class="container">
+      <div class="hero-tag">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+          <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+        </svg>
+        2026 梯子机场推荐与科学上网科普指南
+      </div>
+      <h1 class="hero-title">
+        连接全球网络<br>
+        <span class="gradient-text">探索无限可能</span>
+      </h1>
+      <p class="hero-desc">
+        本站专注研究跨境网络加速技术。为您提供深度、中立的机场线路测评、Clash 与 Shadowrocket 客户端配置教程、IPLC/IEPL 专线解析以及网络防坑指南。
+      </p>
+      
+      <!-- Hero Search Bar -->
+      <div class="hero-search-wrapper">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"/>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+        </svg>
+        <input type="text" class="hero-search-input" id="heroSearch" placeholder="搜索 Clash 教程、专线机场、避坑指南..." />
+        <a href="knowledge.html" class="btn btn-primary" style="padding: 10px 24px;">搜索</a>
+      </div>
+
+      <!-- Stats -->
+      <div class="hero-stats">
+        <div class="stat-item">
+          <span class="stat-num">120+</span>
+          <span class="stat-label">全球节点实测</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num">99.9%</span>
+          <span class="stat-label">稳定在线率</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num">10Gbps</span>
+          <span class="stat-label">专线出口带宽</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num">50万+</span>
+          <span class="stat-label">读者信赖阅读</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Bento Grid Section -->
+  <section class="section-padding" style="background-color: var(--bg-tertiary); transition: background-color var(--transition-normal);">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Core Modules</span>
+        <h2 class="section-title">核心板块快速导航</h2>
+        <p class="section-desc">通过现代卡片布局直达您最感兴趣的内容，快速攻克网络代理学习曲线。</p>
+      </div>
+
+      <div class="bento-grid">
+        <!-- Bento Card 1: 避坑防割 -->
+        <div class="bento-card col-8">
+          <div class="bento-glow-spot"></div>
+          <div class="bento-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+              <line x1="12" y1="9" x2="12" y2="13"/>
+              <line x1="12" y1="17" x2="12.01" y2="17"/>
+            </svg>
+          </div>
+          <h3 class="bento-title">小白避坑：3分钟防跑路割韭菜</h3>
+          <p class="bento-desc">
+            揭露低价“无限流量”机场背后的超售套路，详解为什么必须<b>月付</b>，以及如何识别披着羊皮的虚假测速图。帮助您在鱼龙混杂的机场市场中选择真正的骨灰级老牌商家。
+          </p>
+          <a href="article.html" class="bento-link">
+            阅读防坑指南
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"/>
+              <polyline points="12 5 19 12 12 19"/>
+            </svg>
+          </a>
+        </div>
+
+        <!-- Bento Card 2: 客户端下载 -->
+        <div class="bento-card col-4">
+          <div class="bento-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+              <polyline points="7 10 12 15 17 10"/>
+              <line x1="12" y1="15" x2="12" y2="3"/>
+            </svg>
+          </div>
+          <h3 class="bento-title">客户端下载与订阅转换</h3>
+          <p class="bento-desc">提供全平台主流代理软件，包含 Clash Verge, Shadowrocket 及 V2rayN 的精选版本下载与配置说明。</p>
+          
+          <div class="clients-mini-grid">
+            <a href="knowledge.html" class="mini-client-card">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+              <span class="mini-client-name">Windows</span>
+            </a>
+            <a href="knowledge.html" class="mini-client-card">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="M20 12h2"/><path d="M2 12h2"/></svg>
+              <span class="mini-client-name">Android</span>
+            </a>
+            <a href="knowledge.html" class="mini-client-card">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/><path d="M2 12h20"/></svg>
+              <span class="mini-client-name">iOS</span>
+            </a>
+            <a href="knowledge.html" class="mini-client-card">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2" ry="2"/></svg>
+              <span class="mini-client-name">macOS</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Bento Card 3: 专线线路解析 -->
+        <div class="bento-card col-4">
+          <div class="bento-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="2" y1="12" x2="22" y2="12"/>
+              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+            </svg>
+          </div>
+          <h3 class="bento-title">专线线路深度揭秘</h3>
+          <p class="bento-desc">
+            什么是一级 IPLC 专线？IEPL 与公网 BGP 直连中转有何不同？用通俗的语言深度拆解专线原理，让您明明白白消费。
+          </p>
+          <a href="knowledge.html" class="bento-link">
+            了解专线原理
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"/>
+              <polyline points="12 5 19 12 12 19"/>
+            </svg>
+          </a>
+        </div>
+
+        <!-- Bento Card 4: AI与流媒体 -->
+        <div class="bento-card col-8">
+          <div class="bento-glow-spot" style="background: linear-gradient(135deg, #7c3aed 0%, #10b981 100%);"></div>
+          <div class="bento-icon" style="color: var(--accent);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"/>
+              <path d="M8 12h8"/>
+              <path d="M12 8v8"/>
+            </svg>
+          </div>
+          <h3 class="bento-title">流媒体解锁与 OpenAI ChatGPT 风控对抗</h3>
+          <p class="bento-desc">
+            为您深入拆解奈飞 Netflix、Disney+ 区域封锁策略，详细讲解如何依靠<b>原生双 ISP 住宅 IP</b> 绕过 OpenAI / Claude 严格的账户风控和“Access Denied”报错。
+          </p>
+          <a href="article.html" class="bento-link" style="color: var(--accent);">
+            查看风控绕过策略
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"/>
+              <polyline points="12 5 19 12 12 19"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Recommendation Table -->
+  <section class="section-padding">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Tested & Approved</span>
+        <h2 class="section-title">精选梯子 & 专线机场实测推荐</h2>
+        <p class="section-desc">基于我们在晚高峰（20:00 - 23:00）的真实网络测速表现，提供多维度过滤与排序。所有数据公开透明。</p>
+      </div>
+
+      <!-- Filter and Sort bar -->
+      <div class="table-filter-bar">
+        <div class="filter-btn-group">
+          <div class="filter-tab active" data-filter="all">全部线路</div>
+          <div class="filter-tab" data-filter="vpn">专业 VPN</div>
+          <div class="filter-tab" data-filter="airport">高速机场</div>
+        </div>
+        
+        <div class="sort-select-wrapper">
+          <label for="sortSelect" class="sort-select-label">排序方式:</label>
+          <select id="sortSelect" class="sort-select">
+            <option value="rating">实测评分 (高到低)</option>
+            <option value="speed">高峰带宽 (高到低)</option>
+            <option value="price-asc">单月起步价 (低到高)</option>
+            <option value="price-desc">单月起步价 (高到低)</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Tag Filters Buttons -->
+      <div class="tags-container">
+        <button class="tag-btn active" data-tag="all">全部属性</button>
+        <button class="tag-btn" data-tag="iplc">IPLC物理专线</button>
+        <button class="tag-btn" data-tag="netflix">奈飞流媒体</button>
+        <button class="tag-btn" data-tag="chatgpt">ChatGPT优化</button>
+        <button class="tag-btn" data-tag="trial">有免费试用</button>
+        <button class="tag-btn" data-tag="trojan">Trojan协议</button>
+      </div>
+
+      <!-- Comparison Deck List -->
+      <div class="comp-list">
+        <!-- Item 1 -->
+        <div class="comp-item" data-category="vpn" data-price="29.9" data-speed="95" data-rating="4.9" data-tags="iplc,netflix,chatgpt,trial">
+          <div class="comp-brand">
+            <div class="comp-badge">W</div>
+            <div class="comp-brand-info">
+              <span class="comp-name">Westworld 极速 VPN</span>
+              <div class="comp-tags">
+                <span class="comp-tag comp-tag-featured">首选VPN</span>
+                <span class="comp-tag">物理专线</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="comp-meta-item">
+            <span class="comp-meta-label">晚高峰带宽</span>
+            <span class="comp-meta-val">1000 Mbps</span>
+            <div class="comp-speed-meter">
+              <div class="comp-speed-fill" style="width: 95%;"></div>
+            </div>
+          </div>
+
+          <div class="comp-meta-item">
+            <span class="comp-meta-label">平均延迟 (Ping)</span>
+            <span class="comp-meta-val">22 ms</span>
+          </div>
+
+          <div class="comp-meta-item">
+            <span class="comp-meta-label">客户端支持</span>
+            <span class="comp-meta-val">Win/Mac/iOS/安卓</span>
+          </div>
+
+          <div class="comp-meta-item">
+            <span class="comp-meta-label">起步月付</span>
+            <span class="comp-meta-val" style="color: var(--primary); font-size: 1.15rem;">¥29.9 / 月</span>
+          </div>
+
+          <div class="comp-actions">
+            <div class="comp-rating-wrapper">
+              <span class="pulse-indicator"></span>
+              <span class="comp-score">4.9</span>
+              <div class="comp-stars">
+                <svg viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              </div>
+            </div>
+            <a href="recommend.html" class="btn btn-secondary" style="padding: 6px 12px; font-size: 0.8rem;">查看测评</a>
+          </div>
+        </div>
+
+        <!-- Item 2 -->
+        <div class="comp-item" data-category="airport" data-price="15.0" data-speed="92" data-rating="4.8" data-tags="iplc,trojan,chatgpt">
+          <div class="comp-brand">
+            <div class="comp-badge" style="background: linear-gradient(135deg, #10b981 0%, #3b82f6 100%);">G</div>
+            <div class="comp-brand-info">
+              <span class="comp-name">轨道云 (G-Cloud)</span>
+              <div class="comp-tags">
+                <span class="comp-tag">IEPL 专线</span>
+                <span class="comp-tag">Trojan</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="comp-meta-item">
+            <span class="comp-meta-label">晚高峰带宽</span>
+            <span class="comp-meta-val">2000 Mbps</span>
+            <div class="comp-speed-meter">
+              <div class="comp-speed-fill" style="width: 92%;"></div>
+            </div>
+          </div>
+
+          <div class="comp-meta-item">
+            <span class="comp-meta-label">平均延迟 (Ping)</span>
+            <span class="comp-meta-val">32 ms</span>
+          </div>
+
+          <div class="comp-meta-item">
+            <span class="comp-meta-label">客户端支持</span>
+            <span class="comp-meta-val">Clash/Shadowrocket</span>
+          </div>
+
+          <div class="comp-meta-item">
+            <span class="comp-meta-label">起步月付</span>
+            <span class="comp-meta-val" style="color: var(--primary); font-size: 1.15rem;">¥15.0 / 月</span>
+          </div>
+
+          <div class="comp-actions">
+            <div class="comp-rating-wrapper">
+              <span class="pulse-indicator"></span>
+              <span class="comp-score">4.8</span>
+              <div class="comp-stars">
+                <svg viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              </div>
+            </div>
+            <a href="recommend.html" class="btn btn-secondary" style="padding: 6px 12px; font-size: 0.8rem;">查看测评</a>
+          </div>
+        </div>
+
+        <!-- Item 3 -->
+        <div class="comp-item" data-category="airport" data-price="45.0" data-speed="98" data-rating="4.95" data-tags="iplc,trojan,netflix,chatgpt">
+          <div class="comp-brand">
+            <div class="comp-badge" style="background: linear-gradient(135deg, #7c3aed 0%, #ec4899 100%);">P</div>
+            <div class="comp-brand-info">
+              <span class="comp-name">Polaris 极光旗舰专线</span>
+              <div class="comp-tags">
+                <span class="comp-tag comp-tag-featured">骨灰级老厂</span>
+                <span class="comp-tag">原生住宅 IP</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="comp-meta-item">
+            <span class="comp-meta-label">晚高峰带宽</span>
+            <span class="comp-meta-val">5000 Mbps</span>
+            <div class="comp-speed-meter">
+              <div class="comp-speed-fill" style="width: 98%;"></div>
+            </div>
+          </div>
+
+          <div class="comp-meta-item">
+            <span class="comp-meta-label">平均延迟 (Ping)</span>
+            <span class="comp-meta-val">18 ms</span>
+          </div>
+
+          <div class="comp-meta-item">
+            <span class="comp-meta-label">客户端支持</span>
+            <span class="comp-meta-val">多平台专属订阅</span>
+          </div>
+
+          <div class="comp-meta-item">
+            <span class="comp-meta-label">起步月付</span>
+            <span class="comp-meta-val" style="color: var(--primary); font-size: 1.15rem;">¥45.0 / 月</span>
+          </div>
+
+          <div class="comp-actions">
+            <div class="comp-rating-wrapper">
+              <span class="pulse-indicator"></span>
+              <span class="comp-score">4.95</span>
+              <div class="comp-stars">
+                <svg viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              </div>
+            </div>
+            <a href="recommend.html" class="btn btn-secondary" style="padding: 6px 12px; font-size: 0.8rem;">查看测评</a>
+          </div>
+        </div>
+
+        <!-- Item 4 -->
+        <div class="comp-item" data-category="airport" data-price="9.9" data-speed="78" data-rating="4.2" data-tags="trojan,trial">
+          <div class="comp-brand">
+            <div class="comp-badge" style="background: #64748b;">S</div>
+            <div class="comp-brand-info">
+              <span class="comp-name">SpeedyNet 极速云</span>
+              <div class="comp-tags">
+                <span class="comp-tag">性价比首选</span>
+                <span class="comp-tag">免费试用</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="comp-meta-item">
+            <span class="comp-meta-label">晚高峰带宽</span>
+            <span class="comp-meta-val">500 Mbps</span>
+            <div class="comp-speed-meter">
+              <div class="comp-speed-fill" style="width: 78%;"></div>
+            </div>
+          </div>
+
+          <div class="comp-meta-item">
+            <span class="comp-meta-label">平均延迟 (Ping)</span>
+            <span class="comp-meta-val">55 ms</span>
+          </div>
+
+          <div class="comp-meta-item">
+            <span class="comp-meta-label">客户端支持</span>
+            <span class="comp-meta-val">Clash / Stash / SSD</span>
+          </div>
+
+          <div class="comp-meta-item">
+            <span class="comp-meta-label">起步月付</span>
+            <span class="comp-meta-val" style="color: var(--primary); font-size: 1.15rem;">¥9.9 / 月</span>
+          </div>
+
+          <div class="comp-actions">
+            <div class="comp-rating-wrapper">
+              <span class="pulse-indicator"></span>
+              <span class="comp-score">4.2</span>
+              <div class="comp-stars">
+                <svg viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              </div>
+            </div>
+            <a href="recommend.html" class="btn btn-secondary" style="padding: 6px 12px; font-size: 0.8rem;">查看测评</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Popular Science Wiki / Article Cards Grid -->
+  <section class="section-padding" style="background-color: var(--bg-tertiary); transition: background-color var(--transition-normal);">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Popular Knowledge</span>
+        <h2 class="section-title">热门科学上网知识库</h2>
+        <p class="section-desc">打破网络信息差。通过硬核科普文章，让您快速掌握代理网络协议、分流策略以及安全用网常识。</p>
+      </div>
+
+      <div class="wiki-grid">
+        <!-- Article 1 -->
+        <div class="wiki-card">
+          <span class="wiki-tag">新手教学</span>
+          <h3 class="wiki-title"><a href="article.html">从零开始：Clash Verge 全平台上手安装与订阅导入指南</a></h3>
+          <p class="wiki-desc">作为 Clash 原版停更后最受瞩目的开源客户端，本文将手把手带您安装并配置 Clash Verge，完美解决内核冲突与中文配置问题。</p>
+          <div class="wiki-meta">
+            <span>2026-06-15</span>
+            <span>阅读需要 8 分钟</span>
+          </div>
+        </div>
+
+        <!-- Article 2 -->
+        <div class="wiki-card">
+          <span class="wiki-tag">网络科普</span>
+          <h3 class="wiki-title"><a href="article.html">深度解析 IPLC、IEPL、BGP 中转与直连节点的本质区别</a></h3>
+          <p class="wiki-desc">经常看到机场宣传“物理专线”、“晚高峰不卡顿”？本文为您解析 IPLC 物理租用线路的工作原理以及其抗干扰能力的科学依据。</p>
+          <div class="wiki-meta">
+            <span>2026-06-10</span>
+            <span>阅读需要 12 分钟</span>
+          </div>
+        </div>
+
+        <!-- Article 3 -->
+        <div class="wiki-card">
+          <span class="wiki-tag">网络安全</span>
+          <h3 class="wiki-title"><a href="article.html">安全防骗：机场跑路前的五大征兆与资金安全保全方案</a></h3>
+          <p class="wiki-desc">在科学上网行业中，商家的生命周期各不相同。我们将剖析诸如低价超售、客服消极、长周期维护等商家跑路前出现的异常行为。</p>
+          <div class="wiki-meta">
+            <span>2026-06-08</span>
+            <span>阅读需要 6 分钟</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEO FAQ Accordion -->
+  <section class="section-padding">
+    <div class="container">
+      <div class="section-header" style="text-align: center; margin-bottom: 60px;">
+        <span class="section-tag">FAQ</span>
+        <h2 class="section-title" style="max-width: 600px; margin: 0 auto 16px;">关于科学上网的常见疑问解答</h2>
+        <p class="section-desc" style="margin-left: auto; margin-right: auto;">我们整理了读者最常遇到的核心问题，提供客观实用的技术解答。</p>
+      </div>
+
+      <div class="faq-list">
+        <div class="faq-item">
+          <div class="faq-header">
+            <h3 class="faq-title">什么是科学上网机场？它与普通 VPN 有何区别？</h3>
+            <div class="faq-icon-wrapper">
+              <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/></svg>
+            </div>
+          </div>
+          <div class="faq-content">
+            <p>“机场”是目前科学上网圈子里的通俗叫法，专门指代提供 Shadowsocks、Trojan、VLESS 等翻墙协议节点的服务商。与传统 VPN（如 ExpressVPN、NordVPN 等基于 OpenVPN 或 L2TP 的工具）相比，机场具有以下几个明显优势：</p>
+            <ul style="margin-left: 20px; margin-top: 10px; list-style-type: disc;">
+              <li><b>协议抗封锁性更强：</b> 专为应对流量识别而开发，混淆度高。</li>
+              <li><b>灵活的分流配置：</b> 允许国内应用直连（不走代理），国外应用走代理，完美兼顾访问速度。</li>
+              <li><b>性价比更高：</b> 相比动辄每月 10 美元的海外传统 VPN，机场提供了更丰富的套餐。</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-header">
+            <h3 class="faq-title">什么是 IPLC 和 IEPL 专线？为什么它们在晚高峰不卡？</h3>
+            <div class="faq-icon-wrapper">
+              <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/></svg>
+            </div>
+          </div>
+          <div class="faq-content">
+            <p>IPLC（国际专线）和 IEPL（国际以太网专线）是网络运营商提供的跨境物理专网通道。数据在传输时直接走海底光缆或陆路光缆的专用通道，不经过公共互联网网关，因此<b>不需要接受 GFW（防火墙）的流量审查与拦截</b>。</p>
+            <p style="margin-top: 10px;">普通网络节点在晚高峰（晚上 8 点到 11 点）会因为公网出口拥堵而出现疯狂丢包和降速。而专线节点由于独享物理带宽，能做到 24 小时零丢包、超低延迟，是看 4K/8K 视频与使用 AI 交互的核心首选。</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-header">
+            <h3 class="faq-title">如何防止在购买机场或 VPN 时遭遇“跑路”？</h3>
+            <div class="faq-icon-wrapper">
+              <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/></svg>
+            </div>
+          </div>
+          <div class="faq-content">
+            <p>在享受网络自由的同时，防范商家跑路是每个用户的必修课。以下是四点核心避坑指南：</p>
+            <ul style="margin-left: 20px; margin-top: 10px; list-style-type: disc;">
+              <li><b>绝对坚持月付：</b> 即使年付优惠高达 5 折，也绝不轻易年付。一旦商家关门，月付损失可以忽略不计。</li>
+              <li><b>考察商家资历：</b> 尽量选择运营时间长达 2 年以上的“骨灰级老牌大厂”，这类大厂积攒了大量客户群，跑路成本极高。</li>
+              <li><b>不买“全无限”超低价套餐：</b> 每月 5 元且无限流量的套餐不符合宽带成本规律，通常是骗一波就跑路的“短期收割盘”。</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-header">
+            <h3 class="faq-title">为什么开启代理后仍然无法登录 ChatGPT？</h3>
+            <div class="faq-icon-wrapper">
+              <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/></svg>
+            </div>
+          </div>
+          <div class="faq-content">
+            <p>ChatGPT 开发商 OpenAI 为了防止爬虫及黑客攻击，对访问 IP 的信誉度（Fraud Score）进行了极严的风控过滤。大部分廉价机场使用的都是廉价托管机房（IDC）的广播 IP，数十万用户共享一个 IP 范围，极易触发风控。</p>
+            <p style="margin-top: 10px;"><b>解决方案：</b> 选用能够提供“原生住宅双 ISP IP”的优质专线节点。这种 IP 在风控系统中被视作普通家庭宽带，能够完美绕过限制，解决 Access Denied 报错。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <a href="index.html" class="logo" style="margin-bottom: 12px;">
+            <div class="logo-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="16 18 22 12 16 6"/>
+                <polyline points="8 6 2 12 8 18"/>
+              </svg>
+            </div>
+            <span>TiziTop<span class="gradient-text">拓扑</span></span>
+          </a>
+          <p class="footer-col-desc">
+            TiziTop 梯子拓扑是一个致力于普及网络技术、网络安全及跨境学术科研网络加速指南的独立博客。
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <span class="footer-col-title">快速导航</span>
+          <div class="footer-links">
+            <a href="index.html" class="footer-link">首页探索</a>
+            <a href="recommend.html" class="footer-link">梯子推荐</a>
+            <a href="knowledge.html" class="footer-link">科普指南</a>
+            <a href="about.html" class="footer-link">关于我们</a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <span class="footer-col-title">常用教程</span>
+          <div class="footer-links">
+            <a href="article.html" class="footer-link">Clash Verge 配置</a>
+            <a href="article.html" class="footer-link">Shadowrocket 导入</a>
+            <a href="article.html" class="footer-link">IPLC专线深度解析</a>
+            <a href="article.html" class="footer-link">ChatGPT 风控绕过</a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <span class="footer-col-title">学术免责声明</span>
+          <p class="footer-col-desc" style="font-size: 0.8rem;">
+            本站发布的内容仅限用于跨境学术研究、软件工程开发、外贸商业沟通及个人合法科普学习。请广大读者遵守当地法律法规，切勿利用相关技术从事任何违法违规行为。
+          </p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>© 2026 TiziTop.com 梯子拓扑. 保留所有权利.</span>
+        <div class="footer-socials">
+          <a href="#" class="footer-social-link" aria-label="GitHub">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+          </a>
+          <a href="#" class="footer-social-link" aria-label="Telegram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/main.js"></script>
+</body>
+</html>

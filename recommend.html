@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>稳定梯子与专线机场推荐排行榜 - Tizitop 梯子拓扑</title>
+  <meta name="description" content="Tizitop 梯子拓扑精选 2026 年最稳定、最快的科学上网代理服务商。包含专业 VPN、IPLC 专线机场、Trojan 订阅以及免费试用线路，支持流媒体与 ChatGPT 原生解锁。">
+  
+  <!-- CSS Stylesheet -->
+  <link rel="stylesheet" href="css/main.css">
+  <style>
+    /* Recommendation page specific layouts */
+    .rec-card-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+    @media (max-width: 991px) {
+      .rec-card-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    .rec-item-card {
+      background-color: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      box-shadow: var(--card-shadow);
+      transition: all var(--transition-normal);
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .rec-item-card:hover {
+      border-color: var(--primary);
+      box-shadow: var(--card-shadow-hover);
+      transform: translateY(-4px);
+    }
+    .rec-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 20px;
+    }
+    .rec-card-brand {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .rec-card-badge {
+      width: 56px;
+      height: 56px;
+      border-radius: 16px;
+      background: var(--primary-gradient);
+      color: #ffffff;
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .rec-card-title {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--text-primary);
+    }
+    .rec-card-subtitle {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 4px;
+      display: block;
+    }
+    .rec-score-box {
+      background-color: rgba(var(--primary-rgb), 0.1);
+      color: var(--primary);
+      padding: 6px 12px;
+      border-radius: var(--radius-sm);
+      text-align: center;
+    }
+    .rec-score-num {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.25rem;
+      font-weight: 800;
+      display: block;
+      line-height: 1;
+    }
+    .rec-score-lbl {
+      font-size: 0.65rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-top: 2px;
+      display: block;
+    }
+    .rec-features-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      font-size: 0.85rem;
+    }
+    .rec-feat-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--text-secondary);
+    }
+    .rec-feat-item svg {
+      width: 16px;
+      height: 16px;
+      color: var(--success);
+      flex-shrink: 0;
+    }
+    .rec-pros-cons {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      background-color: var(--bg-tertiary);
+      padding: 16px;
+      border-radius: var(--radius-md);
+      font-size: 0.85rem;
+    }
+    .rec-pro-box, .rec-con-box {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .rec-pc-title {
+      font-weight: 700;
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .rec-pro-title { color: var(--success); }
+    .rec-con-title { color: var(--danger); }
+    .rec-pc-list {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      color: var(--text-muted);
+    }
+    .rec-pc-li {
+      position: relative;
+      padding-left: 10px;
+    }
+    .rec-pc-li::before {
+      content: '•';
+      position: absolute;
+      left: 0;
+    }
+    .rec-card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: auto;
+      border-top: 1px solid var(--border-color);
+      padding-top: 20px;
+    }
+    .rec-price {
+      display: flex;
+      flex-direction: column;
+    }
+    .rec-price-lbl {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+    .rec-price-val {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: var(--primary);
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="container">
+      <a href="index.html" class="logo">
+        <div class="logo-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="16 18 22 12 16 6"/>
+            <polyline points="8 6 2 12 8 18"/>
+          </svg>
+        </div>
+        <span>TiziTop<span class="gradient-text">拓扑</span></span>
+      </a>
+      
+      <nav class="nav-menu" id="navMenu">
+        <a href="index.html" class="nav-link">首页探索</a>
+        <a href="recommend.html" class="nav-link active">梯子推荐</a>
+        <a href="knowledge.html" class="nav-link">科普指南</a>
+        <a href="about.html" class="nav-link">关于我们</a>
+      </nav>
+      
+      <div class="nav-actions">
+        <button class="theme-toggle" id="themeToggle" aria-label="切换主题">
+          <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        </button>
+        <a href="recommend.html" class="btn btn-primary">热门推荐</a>
+        <button class="hamburger" id="hamburger" aria-label="打开菜单">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Title Section -->
+  <section class="section-padding" style="padding-top: calc(var(--header-height) + 40px); background-color: var(--bg-tertiary);">
+    <div class="container">
+      <div class="section-header" style="margin-bottom: 0;">
+        <span class="section-tag">Tested Ranking</span>
+        <h1 class="section-title" style="font-size: 2.75rem;">2026 精选梯子与专线机场测评排行榜</h1>
+        <p class="section-desc" style="max-width: 750px;">
+          我们根据在<b>晚高峰时段（20:00 - 23:00）</b>针对节点延迟、网络吞吐量、流媒体解锁效果及抗封锁强度的实际测试结果，为您挑选出目前性价比最高、服务最稳定的加速产品。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Filter Section -->
+  <section class="section-padding" style="padding-top: 40px; padding-bottom: 80px;">
+    <div class="container">
+      <!-- Filter Controls bar (compatible with main.js) -->
+      <div class="table-filter-bar">
+        <div class="filter-btn-group">
+          <div class="filter-tab active" data-filter="all">全部类型</div>
+          <div class="filter-tab" data-filter="vpn">专业 VPN</div>
+          <div class="filter-tab" data-filter="airport">专线机场</div>
+        </div>
+        
+        <div class="sort-select-wrapper">
+          <label for="sortSelect" class="sort-select-label">排序方式:</label>
+          <select id="sortSelect" class="sort-select">
+            <option value="rating">实测评分 (高到低)</option>
+            <option value="speed">高峰带宽 (高到低)</option>
+            <option value="price-asc">月付价格 (低到高)</option>
+            <option value="price-desc">月付价格 (高到低)</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="tags-container">
+        <button class="tag-btn active" data-tag="all">全部属性</button>
+        <button class="tag-btn" data-tag="iplc">IPLC物理专线</button>
+        <button class="tag-btn" data-tag="netflix">奈飞流媒体</button>
+        <button class="tag-btn" data-tag="chatgpt">ChatGPT优化</button>
+        <button class="tag-btn" data-tag="trial">有免费试用</button>
+        <button class="tag-btn" data-tag="trojan">Trojan协议</button>
+      </div>
+
+      <!-- Recommendation Grid Deck (Uses .comp-list class for main.js sorting support) -->
+      <div class="rec-card-grid comp-list">
+        <!-- Item 1 -->
+        <div class="rec-item-card comp-item" data-category="vpn" data-price="29.9" data-speed="95" data-rating="4.9" data-tags="iplc,netflix,chatgpt,trial">
+          <div class="rec-card-header">
+            <div class="rec-card-brand">
+              <div class="rec-card-badge">W</div>
+              <div>
+                <h3 class="rec-card-title">Westworld 极速 VPN</h3>
+                <span class="rec-card-subtitle">老牌专业跨境网络 VPN</span>
+              </div>
+            </div>
+            <div class="rec-score-box">
+              <span class="rec-score-num">4.9</span>
+              <span class="rec-score-lbl">Score</span>
+            </div>
+          </div>
+
+          <div class="rec-features-list">
+            <div class="rec-feat-item">
+              <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+              <span>晚高峰 1000Mbps 极速</span>
+            </div>
+            <div class="rec-feat-item">
+              <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+              <span>原生住宅双 ISP IP</span>
+            </div>
+            <div class="rec-feat-item">
+              <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+              <span>一键直连，多平台客户端</span>
+            </div>
+            <div class="rec-feat-item">
+              <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+              <span>提供 24 小时免费试用</span>
+            </div>
+          </div>
+
+          <div class="rec-pros-cons">
+            <div class="rec-pro-box">
+              <span class="rec-pc-title rec-pro-title">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+                优势 (Pros)
+              </span>
+              <div class="rec-pc-list">
+                <span class="rec-pc-li">全物理 IPLC 专线，极稳</span>
+                <span class="rec-pc-li">ChatGPT 解锁率达 99%</span>
+                <span class="rec-pc-li">支持银联与支付宝</span>
+              </div>
+            </div>
+            <div class="rec-con-box">
+              <span class="rec-pc-title rec-con-title">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                劣势 (Cons)
+              </span>
+              <div class="rec-pc-list">
+                <span class="rec-pc-li">不支持三方 Clash 转换</span>
+                <span class="rec-pc-li">单月付价格稍贵</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="rec-card-footer">
+            <div class="rec-price">
+              <span class="rec-price-lbl">起步月费</span>
+              <span class="rec-price-val">¥29.9<span style="font-size: 0.8rem; font-weight: normal; color: var(--text-muted);">/月</span></span>
+            </div>
+            <div style="display: flex; gap: 8px;">
+              <a href="article.html" class="btn btn-secondary" style="padding: 10px 16px;">查看测评</a>
+              <a href="#" class="btn btn-primary" style="padding: 10px 16px;">直达官网</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 2 -->
+        <div class="rec-item-card comp-item" data-category="airport" data-price="15.0" data-speed="92" data-rating="4.8" data-tags="iplc,trojan,chatgpt">
+          <div class="rec-card-header">
+            <div class="rec-card-brand">
+              <div class="rec-card-badge" style="background: linear-gradient(135deg, #10b981 0%, #3b82f6 100%);">G</div>
+              <div>
+                <h3 class="rec-card-title">轨道云 (G-Cloud)</h3>
+                <span class="rec-card-subtitle">极高吞吐的高性价比专线机场</span>
+              </div>
+            </div>
+            <div class="rec-score-box">
+              <span class="rec-score-num">4.8</span>
+              <span class="rec-score-lbl">Score</span>
+            </div>
+          </div>
+
+          <div class="rec-features-list">
+            <div class="rec-feat-item">
+              <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+              <span>晚高峰 2000Mbps 超大带宽</span>
+            </div>
+            <div class="rec-feat-item">
+              <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+              <span>深度兼容 Clash/Stash/小火箭</span>
+            </div>
+            <div class="rec-feat-item">
+              <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+              <span>IEPL 物理中专，零封锁</span>
+            </div>
+            <div class="rec-feat-item">
+              <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+              <span>按流量计费，无使用期限</span>
+            </div>
+          </div>
+
+          <div class="rec-pros-cons">
+            <div class="rec-pro-box">
+              <span class="rec-pc-title rec-pro-title">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+                优势 (Pros)
+              </span>
+              <div class="rec-pc-list">
+                <span class="rec-pc-li">节点分布极广（含冷门地区）</span>
+                <span class="rec-pc-li">完美适配 Trojan 订阅</span>
+                <span class="rec-pc-li">多入口 BGP 智能容灾分流</span>
+              </div>
+            </div>
+            <div class="rec-con-box">
+              <span class="rec-pc-title rec-con-title">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                劣势 (Cons)
+              </span>
+              <div class="rec-pc-list">
+                <span class="rec-pc-li">无专属桌面客户端</span>
+                <span class="rec-pc-li">客服只在工单系统响应</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="rec-card-footer">
+            <div class="rec-price">
+              <span class="rec-price-lbl">起步月费</span>
+              <span class="rec-price-val">¥15.0<span style="font-size: 0.8rem; font-weight: normal; color: var(--text-muted);">/月</span></span>
+            </div>
+            <div style="display: flex; gap: 8px;">
+              <a href="article.html" class="btn btn-secondary" style="padding: 10px 16px;">查看测评</a>
+              <a href="#" class="btn btn-primary" style="padding: 10px 16px;">直达官网</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 3 -->
+        <div class="rec-item-card comp-item" data-category="airport" data-price="45.0" data-speed="98" data-rating="4.95" data-tags="iplc,trojan,netflix,chatgpt">
+          <div class="rec-card-header">
+            <div class="rec-card-brand">
+              <div class="rec-card-badge" style="background: linear-gradient(135deg, #7c3aed 0%, #ec4899 100%);">P</div>
+              <div>
+                <h3 class="rec-card-title">Polaris 极光旗舰专线</h3>
+                <span class="rec-card-subtitle">面向极客与企业的高端专线中转机场</span>
+              </div>
+            </div>
+            <div class="rec-score-box">
+              <span class="rec-score-num">4.95</span>
+              <span class="rec-score-lbl">Score</span>
+            </div>
+          </div>
+
+          <div class="rec-features-list">
+            <div class="rec-feat-item">
+              <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+              <span>晚高峰 5000Mbps 极速专线</span>
+            </div>
+            <div class="rec-feat-item">
+              <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+              <span>提供独享双 ISP 原生家庭 IP</span>
+            </div>
+            <div class="rec-feat-item">
+              <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+              <span>流媒体与 AI 全地域解锁支持</span>
+            </div>
+            <div class="rec-feat-item">
+              <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+              <span>SLA 在线率 99.99% 金牌服务</span>
+            </div>
+          </div>
+
+          <div class="rec-pros-cons">
+            <div class="rec-pro-box">
+              <span class="rec-pc-title rec-pro-title">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+                优势 (Pros)
+              </span>
+              <div class="rec-pc-list">
+                <span class="rec-pc-li">真正的独享物理 IPLC，无挤占</span>
+                <span class="rec-pc-li">住宅双 ISP 极净纯净度 IP</span>
+                <span class="rec-pc-li">7x24 小时人工在线客服</span>
+              </div>
+            </div>
+            <div class="rec-con-box">
+              <span class="rec-pc-title rec-con-title">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                劣势 (Cons)
+              </span>
+              <div class="rec-pc-list">
+                <span class="rec-pc-li">价格较高，性价比略低</span>
+                <span class="rec-pc-li">仅限高净值个人与企业团队</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="rec-card-footer">
+            <div class="rec-price">
+              <span class="rec-price-lbl">起步月费</span>
+              <span class="rec-price-val">¥45.0<span style="font-size: 0.8rem; font-weight: normal; color: var(--text-muted);">/月</span></span>
+            </div>
+            <div style="display: flex; gap: 8px;">
+              <a href="article.html" class="btn btn-secondary" style="padding: 10px 16px;">查看测评</a>
+              <a href="#" class="btn btn-primary" style="padding: 10px 16px;">直达官网</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 4 -->
+        <div class="rec-item-card comp-item" data-category="airport" data-price="9.9" data-speed="78" data-rating="4.2" data-tags="trojan,trial">
+          <div class="rec-card-header">
+            <div class="rec-card-brand">
+              <div class="rec-card-badge" style="background: #64748b;">S</div>
+              <div>
+                <h3 class="rec-card-title">SpeedyNet 极速云</h3>
+                <span class="rec-card-subtitle">极具性价比的大流量基础机场</span>
+              </div>
+            </div>
+            <div class="rec-score-box">
+              <span class="rec-score-num">4.2</span>
+              <span class="rec-score-lbl">Score</span>
+            </div>
+          </div>
+
+          <div class="rec-features-list">
+            <div class="rec-feat-item">
+              <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+              <span>提供 500Mbps 稳定带宽</span>
+            </div>
+            <div class="rec-feat-item">
+              <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+              <span>直连与普通 BGP 中继混合</span>
+            </div>
+            <div class="rec-feat-item">
+              <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+              <span>支持 Trojan 与 SSR 订阅链接</span>
+            </div>
+            <div class="rec-feat-item">
+              <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+              <span>有免费试用（额度 5GB/天）</span>
+            </div>
+          </div>
+
+          <div class="rec-pros-cons">
+            <div class="rec-pro-box">
+              <span class="rec-pc-title rec-pro-title">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+                优势 (Pros)
+              </span>
+              <div class="rec-pc-list">
+                <span class="rec-pc-li">价格极度低廉，流量足</span>
+                <span class="rec-pc-li">免费试用体验，门槛低</span>
+              </div>
+            </div>
+            <div class="rec-con-box">
+              <span class="rec-pc-title rec-con-title">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                劣势 (Cons)
+              </span>
+              <div class="rec-pc-list">
+                <span class="rec-pc-li">晚高峰部分直连节点延迟高</span>
+                <span class="rec-pc-li">节点时而有瞬断掉线现象</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="rec-card-footer">
+            <div class="rec-price">
+              <span class="rec-price-lbl">起步月费</span>
+              <span class="rec-price-val">¥9.9<span style="font-size: 0.8rem; font-weight: normal; color: var(--text-muted);">/月</span></span>
+            </div>
+            <div style="display: flex; gap: 8px;">
+              <a href="article.html" class="btn btn-secondary" style="padding: 10px 16px;">查看测评</a>
+              <a href="#" class="btn btn-primary" style="padding: 10px 16px;">直达官网</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <a href="index.html" class="logo" style="margin-bottom: 12px;">
+            <div class="logo-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="16 18 22 12 16 6"/>
+                <polyline points="8 6 2 12 8 18"/>
+              </svg>
+            </div>
+            <span>TiziTop<span class="gradient-text">拓扑</span></span>
+          </a>
+          <p class="footer-col-desc">
+            TiziTop 梯子拓扑是一个致力于普及网络技术、网络安全及跨境学术科研网络加速指南的独立博客。
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <span class="footer-col-title">快速导航</span>
+          <div class="footer-links">
+            <a href="index.html" class="footer-link">首页探索</a>
+            <a href="recommend.html" class="footer-link">梯子推荐</a>
+            <a href="knowledge.html" class="footer-link">科普指南</a>
+            <a href="about.html" class="footer-link">关于我们</a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <span class="footer-col-title">常用教程</span>
+          <div class="footer-links">
+            <a href="article.html" class="footer-link">Clash Verge 配置</a>
+            <a href="article.html" class="footer-link">Shadowrocket 导入</a>
+            <a href="article.html" class="footer-link">IPLC专线深度解析</a>
+            <a href="article.html" class="footer-link">ChatGPT 风控绕过</a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <span class="footer-col-title">学术免责声明</span>
+          <p class="footer-col-desc" style="font-size: 0.8rem;">
+            本站发布的内容仅限用于跨境学术研究、软件工程开发、外贸商业沟通及个人合法科普学习。请广大读者遵守当地法律法规，切勿利用相关技术从事任何违法违规行为。
+          </p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>© 2026 TiziTop.com 梯子拓扑. 保留所有权利.</span>
+        <div class="footer-socials">
+          <a href="#" class="footer-social-link" aria-label="GitHub">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+          </a>
+          <a href="#" class="footer-social-link" aria-label="Telegram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/main.js"></script>
+</body>
+</html>

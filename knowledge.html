@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>网络科普与客户端代理配置教程中心 - Tizitop 梯子拓扑</title>
+  <meta name="description" content="Tizitop 梯子拓扑为您提供详细的 Clash Verge, Shadowrocket 客户端配置教程，深度解析 IPLC 专线等科学上网底层网络技术，普及网络安全与防跑路常识。">
+  
+  <!-- CSS Stylesheet -->
+  <link rel="stylesheet" href="css/main.css">
+  <style>
+    /* Knowledge base page specific styling */
+    .knowledge-search-bar {
+      max-width: 600px;
+      margin: 0 auto 40px;
+      position: relative;
+      background-color: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 8px 8px 8px 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      box-shadow: var(--card-shadow);
+      transition: all var(--transition-fast);
+    }
+    .knowledge-search-bar:focus-within {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 4px rgba(var(--primary-rgb), 0.15);
+    }
+    .knowledge-search-bar svg {
+      color: var(--text-muted);
+      flex-shrink: 0;
+    }
+    .knowledge-search-input {
+      flex-grow: 1;
+      font-weight: 500;
+      color: var(--text-primary);
+      width: 100%;
+    }
+    .grid-holder {
+      margin-top: 40px;
+    }
+    .category-filter-nav {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 32px;
+    }
+    .cat-nav-btn {
+      padding: 8px 20px;
+      border-radius: var(--radius-md);
+      font-size: 0.9rem;
+      font-weight: 600;
+      background-color: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: all var(--transition-fast);
+    }
+    .cat-nav-btn:hover {
+      border-color: var(--border-hover);
+      color: var(--text-primary);
+    }
+    .cat-nav-btn.active {
+      background: var(--primary-gradient);
+      border-color: transparent;
+      color: #ffffff;
+    }
+    .article-card-item {
+      display: flex;
+      flex-direction: column;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="container">
+      <a href="index.html" class="logo">
+        <div class="logo-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="16 18 22 12 16 6"/>
+            <polyline points="8 6 2 12 8 18"/>
+          </svg>
+        </div>
+        <span>TiziTop<span class="gradient-text">拓扑</span></span>
+      </a>
+      
+      <nav class="nav-menu" id="navMenu">
+        <a href="index.html" class="nav-link">首页探索</a>
+        <a href="recommend.html" class="nav-link">梯子推荐</a>
+        <a href="knowledge.html" class="nav-link active">科普指南</a>
+        <a href="about.html" class="nav-link">关于我们</a>
+      </nav>
+      
+      <div class="nav-actions">
+        <button class="theme-toggle" id="themeToggle" aria-label="切换主题">
+          <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        </button>
+        <a href="recommend.html" class="btn btn-primary">热门推荐</a>
+        <button class="hamburger" id="hamburger" aria-label="打开菜单">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Title section -->
+  <section class="section-padding" style="padding-top: calc(var(--header-height) + 40px); background-color: var(--bg-tertiary);">
+    <div class="container">
+      <div class="section-header" style="text-align: center; margin-bottom: 0;">
+        <span class="section-tag">Library Hub</span>
+        <h1 class="section-title" style="font-size: 2.75rem; margin-left: auto; margin-right: auto;">科普教程与网络知识库</h1>
+        <p class="section-desc" style="margin-left: auto; margin-right: auto; max-width: 680px;">
+          消除跨境学术与技术研究中的信息不对称。在此查找您需要的各平台代理软件安装步骤、进阶混淆配置以及线路分析知识。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main section with search & grid -->
+  <section class="section-padding" style="padding-top: 50px;">
+    <div class="container">
+      <!-- Local client-side instant search -->
+      <div class="knowledge-search-bar">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"/>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+        </svg>
+        <input type="text" class="knowledge-search-input" id="localSearch" placeholder="输入关键字，本地实时筛选文章..." />
+      </div>
+
+      <!-- Categories filters nav -->
+      <div class="category-filter-nav">
+        <button class="cat-nav-btn active" data-cat="all">全部文章</button>
+        <button class="cat-nav-btn" data-cat="tutorial">软件教程</button>
+        <button class="cat-nav-btn" data-cat="科普">线路科普</button>
+        <button class="cat-nav-btn" data-cat="security">安全避坑</button>
+        <button class="cat-nav-btn" data-cat="advanced">高阶进阶</button>
+      </div>
+
+      <!-- Cards Grid -->
+      <div class="wiki-grid grid-holder" id="articlesContainer">
+        <!-- Article 1 -->
+        <div class="wiki-card article-card-item" data-category="tutorial" data-title="从零开始：clash verge 全平台上手安装与订阅导入指南">
+          <span class="wiki-tag">软件教程</span>
+          <h3 class="wiki-title"><a href="article.html">从零开始：Clash Verge 全平台上手安装与订阅导入指南</a></h3>
+          <p class="wiki-desc">作为 Clash 原版停更后最受瞩目的开源客户端，本文将手把手带您安装并配置 Clash Verge，完美解决内核冲突与中文配置问题。</p>
+          <div class="wiki-meta">
+            <span>2026-06-15</span>
+            <span>阅读需要 8 分钟</span>
+          </div>
+        </div>
+
+        <!-- Article 2 -->
+        <div class="wiki-card article-card-item" data-category="科普" data-title="深度解析 iplc、iepl、bgp 中转与直连节点的本质区别">
+          <span class="wiki-tag">线路科普</span>
+          <h3 class="wiki-title"><a href="article.html">深度解析 IPLC、IEPL、BGP 中转与直连节点的本质区别</a></h3>
+          <p class="wiki-desc">经常看到机场宣传“物理专线”、“晚高峰不卡顿”？本文为您解析 IPLC 物理租用线路的工作原理以及其抗干扰能力的科学依据。</p>
+          <div class="wiki-meta">
+            <span>2026-06-10</span>
+            <span>阅读需要 12 分钟</span>
+          </div>
+        </div>
+
+        <!-- Article 3 -->
+        <div class="wiki-card article-card-item" data-category="security" data-title="安全防骗：机场跑路前的五大征兆与资金安全保全方案">
+          <span class="wiki-tag">安全避坑</span>
+          <h3 class="wiki-title"><a href="article.html">安全防骗：机场跑路前的五大征兆与资金安全保全方案</a></h3>
+          <p class="wiki-desc">在科学上网行业中，商家的生命周期各不相同。我们将剖析诸如低价超售、客服消极、长周期维护等商家跑路前出现的异常行为。</p>
+          <div class="wiki-meta">
+            <span>2026-06-08</span>
+            <span>阅读需要 6 分钟</span>
+          </div>
+        </div>
+
+        <!-- Article 4 -->
+        <div class="wiki-card article-card-item" data-category="advanced" data-title="全方位绕过 chatgpt / openai 'access denied' 拒绝访问风控指南">
+          <span class="wiki-tag">高阶进阶</span>
+          <h3 class="wiki-title"><a href="article.html">全方位绕过 ChatGPT / OpenAI 'Access Denied' 拒绝访问风控指南</a></h3>
+          <p class="wiki-desc">ChatGPT 提示拒绝服务？本教程教你使用原生住宅 IP 和专线转发机制，解决 ChatGPT 账户风控和登录封号阻断问题。</p>
+          <div class="wiki-meta">
+            <span>2026-06-02</span>
+            <span>阅读需要 10 分钟</span>
+          </div>
+        </div>
+
+        <!-- Article 5 -->
+        <div class="wiki-card article-card-item" data-category="tutorial" data-title="shadowrocket (小火箭) 节点二维码扫码导入与规则分流精细化配置">
+          <span class="wiki-tag">软件教程</span>
+          <h3 class="wiki-title"><a href="article.html">Shadowrocket (小火箭) 节点二维码扫码导入与规则分流精细化配置</a></h3>
+          <p class="wiki-desc">详解苹果 iOS 系统下小火箭 Shadowrocket 订阅导入、规则文件下载及如何开启按应用分流，确保国内外网路按需加速。</p>
+          <div class="wiki-meta">
+            <span>2026-05-28</span>
+            <span>阅读需要 7 分钟</span>
+          </div>
+        </div>
+
+        <!-- Article 6 -->
+        <div class="wiki-card article-card-item" data-category="科普" data-title="小白翻墙如何选择？详解 vpn 与 机场 (shadowsocks) 的优缺点对比">
+          <span class="wiki-tag">线路科普</span>
+          <h3 class="wiki-title"><a href="article.html">小白翻墙如何选择？详解 VPN 与 机场 (Shadowsocks) 的优缺点对比</a></h3>
+          <p class="wiki-desc">分不清各种代理客户端和传统 VPN 的区别？一文带您理清它们在协议、性能、分流、多设备管理等层面的异同。</p>
+          <div class="wiki-meta">
+            <span>2026-05-20</span>
+            <span>阅读需要 9 分钟</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <a href="index.html" class="logo" style="margin-bottom: 12px;">
+            <div class="logo-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="16 18 22 12 16 6"/>
+                <polyline points="8 6 2 12 8 18"/>
+              </svg>
+            </div>
+            <span>TiziTop<span class="gradient-text">拓扑</span></span>
+          </a>
+          <p class="footer-col-desc">
+            TiziTop 梯子拓扑是一个致力于普及 network 技术、网络安全及跨境学术科研网络加速指南的独立博客。
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <span class="footer-col-title">快速导航</span>
+          <div class="footer-links">
+            <a href="index.html" class="footer-link">首页探索</a>
+            <a href="recommend.html" class="footer-link">梯子推荐</a>
+            <a href="knowledge.html" class="footer-link">科普指南</a>
+            <a href="about.html" class="footer-link">关于我们</a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <span class="footer-col-title">常用教程</span>
+          <div class="footer-links">
+            <a href="article.html" class="footer-link">Clash Verge 配置</a>
+            <a href="article.html" class="footer-link">Shadowrocket 导入</a>
+            <a href="article.html" class="footer-link">IPLC专线深度解析</a>
+            <a href="article.html" class="footer-link">ChatGPT 风控绕过</a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <span class="footer-col-title">学术免责声明</span>
+          <p class="footer-col-desc" style="font-size: 0.8rem;">
+            本站发布的内容仅限用于跨境学术研究、软件工程开发、外贸商业沟通及个人合法科普学习。请广大读者遵守当地法律法规，切勿利用相关技术从事任何违法违规行为。
+          </p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>© 2026 TiziTop.com 梯子拓扑. 保留所有权利.</span>
+        <div class="footer-socials">
+          <a href="#" class="footer-social-link" aria-label="GitHub">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+          </a>
+          <a href="#" class="footer-social-link" aria-label="Telegram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/main.js"></script>
+  
+  <!-- Local instant search & category script -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const localSearch = document.getElementById('localSearch');
+      const catBtns = document.querySelectorAll('.cat-nav-btn');
+      const articles = document.querySelectorAll('.article-card-item');
+
+      let currentCat = 'all';
+      let searchQuery = '';
+
+      // Tab click filters
+      catBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          catBtns.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          currentCat = btn.dataset.cat;
+          filterArticles();
+        });
+      });
+
+      // Search typing filter
+      localSearch.addEventListener('input', (e) => {
+        searchQuery = e.target.value.toLowerCase().trim();
+        filterArticles();
+      });
+
+      function filterArticles() {
+        articles.forEach(card => {
+          const category = card.dataset.category;
+          const title = card.dataset.title;
+
+          const catMatch = currentCat === 'all' || category === currentCat;
+          const searchMatch = !searchQuery || title.includes(searchQuery);
+
+          if (catMatch && searchMatch) {
+            card.style.display = 'flex';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      }
+    });
+  </script>
+</body>
+</html>

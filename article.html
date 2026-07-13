@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>从零开始：Clash Verge 全平台上手安装与订阅导入指南 - Tizitop 梯子拓扑</title>
+  <meta name="description" content="本教程手把手带您快速上手安装配置 Clash Verge 客户端。包含基础安装步骤、订阅链接导入、常见内核错误排查以及智能分流规则的精细化配置。">
+  
+  <!-- CSS Stylesheet -->
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="container">
+      <a href="index.html" class="logo">
+        <div class="logo-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="16 18 22 12 16 6"/>
+            <polyline points="8 6 2 12 8 18"/>
+          </svg>
+        </div>
+        <span>TiziTop<span class="gradient-text">拓扑</span></span>
+      </a>
+      
+      <nav class="nav-menu" id="navMenu">
+        <a href="index.html" class="nav-link">首页探索</a>
+        <a href="recommend.html" class="nav-link">梯子推荐</a>
+        <a href="knowledge.html" class="nav-link active">科普指南</a>
+        <a href="about.html" class="nav-link">关于我们</a>
+      </nav>
+      
+      <div class="nav-actions">
+        <button class="theme-toggle" id="themeToggle" aria-label="切换主题">
+          <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        </button>
+        <a href="recommend.html" class="btn btn-primary">热门推荐</a>
+        <button class="hamburger" id="hamburger" aria-label="打开菜单">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Reading Progress Bar -->
+  <div class="progress-bar-container">
+    <div class="progress-bar-fill" id="progressBar"></div>
+  </div>
+
+  <!-- Main Container -->
+  <main class="container section-padding" style="padding-top: calc(var(--header-height) + 40px);">
+    <div class="article-container">
+      
+      <!-- Left side: Content -->
+      <article class="article-main">
+        <div class="article-header">
+          <span class="article-category">软件教程 / Tutorial</span>
+          <h1 class="article-title">从零开始：Clash Verge 全平台上手安装与订阅导入指南</h1>
+          
+          <div class="article-meta-info">
+            <div class="article-author">
+              <div class="article-author-img">T</div>
+              <span>拓扑技术组</span>
+            </div>
+            <span>•</span>
+            <span>更新时间: 2026-06-15</span>
+            <span>•</span>
+            <span>预计阅读时间: 8 分钟</span>
+          </div>
+        </div>
+
+        <div class="article-body">
+          <p>
+            由于老牌 Clash 核心及 Clash for Windows 客户端在 2023 年相继停止维护，许多用户面临着代理软件失效或无新版本更新的尴尬局面。
+            在此背景下，基于 <b>Tauri + Rust</b> 编写的现代开源代理客户端 <b>Clash Verge</b> 迅速崛起，成为目前最主流的 Clash 系列替代工具。
+          </p>
+          
+          <p>
+            Clash Verge 不仅拥有高度美观、现代的 UI 界面，而且原生支持 <b>Mihomo (原 Clash Meta)</b> 内核，对 Hysteria 2、VLESS Reality 等新一代高能混淆协议提供了极佳的兼容性。
+          </p>
+
+          <!-- Tip Box -->
+          <div class="callout callout-tip">
+            <div class="callout-title">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+              为什么推荐使用 Mihomo (Meta) 内核？
+            </div>
+            <p>
+              Mihomo 内核是传统 Clash 内核的超集。不仅在稳定性上有所提升，更重要的是它支持<b>最新的抗封锁协议</b>。如果您的专线机场或节点支持 VLESS 协议，必须在 Clash Verge 的“内核设置”中切换至 Meta 内核才能正常运行。
+            </p>
+          </div>
+
+          <h2 id="download-and-installation">一、Clash Verge 客户端的下载与安装</h2>
+          <p>
+            Clash Verge 官方源代码在 GitHub 开源分发。为了避免下载到被植入木马的恶意修改版，建议始终通过其官方开源发布渠道进行下载：
+          </p>
+          
+          <ul>
+            <li>Windows 用户：根据 CPU 架构下载 <code>.exe</code> 或是免安装的 <code>.zip</code> 压缩包。</li>
+            <li>macOS 用户：根据芯片类型下载（Intel 芯片选 <code>x64.dmg</code>，苹果 M1/M2/M3 芯片选 <code>aarch64.dmg</code>）。</li>
+            <li>Linux 用户：支持使用 <code>.deb</code> 或是 <code>.AppImage</code> 文件进行配置。</li>
+          </ul>
+
+          <pre><code># 常用包命名格式示例
+# Windows 64位安装包
+Clash.Verge_1.x.x_x64-setup.exe
+
+# macOS Apple 硅片安装包
+Clash.Verge_1.x.x_aarch64.dmg</code></pre>
+
+          <h2 id="importing-subscription">二、获取并导入您的机场订阅链接</h2>
+          <p>
+            获取到代理链接后，您需要将其导入 Clash Verge。以下是标准的导入流程：
+          </p>
+          
+          <ol style="margin-left: 24px; margin-bottom: 24px;">
+            <li style="margin-bottom: 8px;">打开浏览器登录您的加速机场后台，复制对应的 <b>Clash 订阅链接 (YAML 格式)</b>。</li>
+            <li style="margin-bottom: 8px;">启动 Clash Verge 客户端，在左侧导航栏点击进入 <b>“订阅 (Profiles)”</b> 选项卡。</li>
+            <li style="margin-bottom: 8px;">在顶部输入框中粘贴您刚才复制的订阅 URL 链接，点击右侧的 <b>“导入 (Import)”</b> 按钮。</li>
+            <li style="margin-bottom: 8px;">等待系统下载完成。下载成功后，会出现一个带彩色进度条的配置文件卡片，<b>鼠标右键点击它并选择“使用 (Use)”</b>，卡片边缘高亮即代表生效。</li>
+          </ol>
+
+          <!-- Warning Box -->
+          <div class="callout callout-warning">
+            <div class="callout-title">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+              特别提醒：保护好您的订阅链接！
+            </div>
+            <p>
+              订阅链接包含了您的节点密钥，类似于您购买套餐的专属密码。请勿公开分享，或将订阅输入未知安全的第三方在线“订阅转换器”中，否则极易导致订阅额度被盗刷或账户被防火墙阻断。
+            </p>
+          </div>
+
+          <h2 id="starting-and-routing">三、启用系统代理与分流模式选择</h2>
+          <p>
+            导入配置文件后，我们需要将其置于“运行”状态。在左侧导航栏点击 <b>“设置 (Settings)”</b>：
+          </p>
+          
+          <p>
+            1. 找到 <b>“系统代理 (System Proxy)”</b> 选项，并将其开关开启。此时，您电脑的所有流量就会按分流规则进行代理。
+          </p>
+          <p>
+            2. 为了获得最佳体验，请在客户端托盘或侧边栏确保工作模式为 <b>“规则 (Rule)” 模式</b>。在此模式下，Clash 将自动判断访问目标：如果是国内网银、微信或淘宝，则直接访问不走代理；如果是 Google, YouTube 或 Netflix，则自动通过代理节点访问。这不仅可以节省套餐流量，更能有效避免国内软件因 IP 异地异常登录而弹警告。
+          </p>
+
+          <h2 id="troubleshooting">四、无法联网？排查常见错误</h2>
+          <p>
+            在上手使用中，经常有用户反映导入后“红圈报错”或“浏览器无法打开网页”。这通常是由以下原因导致的，您可以按此排查：
+          </p>
+          
+          <h3 id="trouble-1">1. 系统时间不同步 (核心原因)</h3>
+          <p>
+            绝大多数代理协议（如 VMess/Trojan/VLESS）都对时钟同步有极其严格的要求。如果您的电脑系统时间与北京时间误差超过 90 秒，节点会报错 <code>TIMEOUT</code> 或握手失败。请进入 Windows 设置，点击“同步时钟”即可解决。
+          </p>
+
+          <h3 id="trouble-2">2. 虚拟网卡或代理冲突</h3>
+          <p>
+            如果在 Clash Verge 之前，您电脑运行过旧版 Clash for Windows 或其他代理网速工具，其残留的系统端口占用可能会导致新软件无法成功代理。请确保彻底关闭其他代理工具，并在“设置”中重置网络属性。
+          </p>
+        </div>
+      </article>
+
+      <!-- Right side: Sidebar with TOC -->
+      <aside class="article-sidebar">
+        
+        <!-- Table of Contents Widget -->
+        <div class="sidebar-widget sidebar-widget-sticky">
+          <h3 class="widget-title">文章目录</h3>
+          <ul class="toc-list">
+            <li class="toc-item active"><a href="#download-and-installation">一、Clash Verge 下载与安装</a></li>
+            <li class="toc-item"><a href="#importing-subscription">二、导入您的机场订阅链接</a></li>
+            <li class="toc-item"><a href="#starting-and-routing">三、启用代理与分流模式选择</a></li>
+            <li class="toc-item"><a href="#troubleshooting">四、无法联网？排查常见错误</a></li>
+            <li class="toc-item toc-h3"><a href="#trouble-1">1. 系统时间不同步</a></li>
+            <li class="toc-item toc-h3"><a href="#trouble-2">2. 虚拟网卡与代理冲突</a></li>
+          </ul>
+        </div>
+        
+        <!-- Safety widget -->
+        <div class="sidebar-widget">
+          <h3 class="widget-title">安全防骗建议</h3>
+          <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.6;">
+            1. 绝对不要购买商家的“终身付”或“3年付”套餐。<br>
+            2. 使用多备用订阅，避免主梯子维护时无法工作。<br>
+            3. 学术研究用网切勿用于政治敏感探讨。
+          </p>
+        </div>
+      </aside>
+      
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <a href="index.html" class="logo" style="margin-bottom: 12px;">
+            <div class="logo-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="16 18 22 12 16 6"/>
+                <polyline points="8 6 2 12 8 18"/>
+              </svg>
+            </div>
+            <span>TiziTop<span class="gradient-text">拓扑</span></span>
+          </a>
+          <p class="footer-col-desc">
+            TiziTop 梯子拓扑是一个致力于普及网络技术、网络安全及跨境学术科研网络加速指南的独立博客。
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <span class="footer-col-title">快速导航</span>
+          <div class="footer-links">
+            <a href="index.html" class="footer-link">首页探索</a>
+            <a href="recommend.html" class="footer-link">梯子推荐</a>
+            <a href="knowledge.html" class="footer-link">科普指南</a>
+            <a href="about.html" class="footer-link">关于我们</a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <span class="footer-col-title">常用教程</span>
+          <div class="footer-links">
+            <a href="article.html" class="footer-link">Clash Verge 配置</a>
+            <a href="article.html" class="footer-link">Shadowrocket 导入</a>
+            <a href="article.html" class="footer-link">IPLC专线深度解析</a>
+            <a href="article.html" class="footer-link">ChatGPT 风控绕过</a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <span class="footer-col-title">学术免责声明</span>
+          <p class="footer-col-desc" style="font-size: 0.8rem;">
+            本站发布的内容仅限用于跨境学术研究、软件工程开发、外贸商业沟通及个人合法科普学习。请广大读者遵守当地法律法规，切勿利用相关技术从事任何违法违规行为。
+          </p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>© 2026 TiziTop.com 梯子拓扑. 保留所有权利.</span>
+        <div class="footer-socials">
+          <a href="#" class="footer-social-link" aria-label="GitHub">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+          </a>
+          <a href="#" class="footer-social-link" aria-label="Telegram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/main.js"></script>
+</body>
+</html>
