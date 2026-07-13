@@ -3,6 +3,7 @@
 document.addEventListener('DOMContentLoaded', () => {
   initTheme();
   initMobileMenu();
+  initClientTabs();
   initFaqs();
   initFiltersAndSorting();
   initReadingProgress();
@@ -16,7 +17,6 @@ function initTheme() {
   const themeToggle = document.getElementById('themeToggle');
   if (!themeToggle) return;
 
-  // Retrieve theme preference from localStorage or check system preference
   const savedTheme = localStorage.getItem('theme');
   const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
   
@@ -26,7 +26,6 @@ function initTheme() {
     document.documentElement.removeAttribute('data-theme');
   }
 
-  // Handle click on theme switcher
   themeToggle.addEventListener('click', () => {
     const currentTheme = document.documentElement.getAttribute('data-theme');
     if (currentTheme === 'dark') {
@@ -54,7 +53,6 @@ function initMobileMenu() {
     navMenu.classList.toggle('active');
   });
 
-  // Close menu when clicking links
   const navLinks = document.querySelectorAll('.nav-link');
   navLinks.forEach(link => {
     link.addEventListener('click', () => {
@@ -63,12 +61,40 @@ function initMobileMenu() {
     });
   });
 
-  // Close menu when clicking outside
   document.addEventListener('click', (e) => {
     if (!navMenu.contains(e.target) && !hamburger.contains(e.target)) {
       hamburger.classList.remove('active');
       navMenu.classList.remove('active');
     }
+  });
+}
+
+/**
+ * Interactive Client Assistant Tab Switching
+ */
+function initClientTabs() {
+  const tabBtns = document.querySelectorAll('.client-tab-btn');
+  const tabContents = document.querySelectorAll('.client-content');
+  
+  if (tabBtns.length === 0 || tabContents.length === 0) return;
+
+  tabBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const targetOS = btn.dataset.os; // win, mac, ios, android
+      
+      // Toggle button active state
+      tabBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      
+      // Toggle active content panel
+      tabContents.forEach(content => {
+        if (content.id === `client-content-${targetOS}`) {
+          content.classList.add('active');
+        } else {
+          content.classList.remove('active');
+        }
+      });
+    });
   });
 }
 
@@ -84,7 +110,6 @@ function initFaqs() {
       const content = header.nextElementSibling;
       const isActive = item.classList.contains('active');
 
-      // Close all other FAQs
       document.querySelectorAll('.faq-item').forEach(otherItem => {
         if (otherItem !== item) {
           otherItem.classList.remove('active');
@@ -92,7 +117,6 @@ function initFaqs() {
         }
       });
 
-      // Toggle current FAQ
       if (isActive) {
         item.classList.remove('active');
         content.style.maxHeight = null;
@@ -116,30 +140,27 @@ function initFiltersAndSorting() {
 
   if (!compList || items.length === 0) return;
 
-  let currentCategory = 'all'; // all, vpn, airport
-  let activeTag = 'all'; // all, iplc, trojan, etc.
+  let currentCategory = 'all';
+  let activeTag = 'all';
 
-  // 1. Tab filter (All / VPN / Airport)
   filterTabs.forEach(tab => {
     tab.addEventListener('click', () => {
       filterTabs.forEach(t => t.classList.remove('active'));
       tab.classList.add('active');
-      currentCategory = tab.dataset.filter; // 'all', 'vpn', 'airport'
+      currentCategory = tab.dataset.filter;
       applyFiltersAndSort();
     });
   });
 
-  // 2. Tag filter buttons
   tagBtns.forEach(btn => {
     btn.addEventListener('click', () => {
       tagBtns.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
-      activeTag = btn.dataset.tag; // 'all', 'iplc', 'trojan', etc.
+      activeTag = btn.dataset.tag;
       applyFiltersAndSort();
     });
   });
 
-  // 3. Dropdown Sorting Selector
   if (sortSelect) {
     sortSelect.addEventListener('change', () => {
       applyFiltersAndSort();
@@ -147,12 +168,9 @@ function initFiltersAndSorting() {
   }
 
   function applyFiltersAndSort() {
-    // A. Filter Elements
     let visibleItems = items.filter(item => {
-      // Category filter match
       const categoryMatch = currentCategory === 'all' || item.dataset.category === currentCategory;
       
-      // Tag filter match
       let tagMatch = activeTag === 'all';
       if (!tagMatch && item.dataset.tags) {
         const itemTags = item.dataset.tags.split(',');
@@ -164,9 +182,8 @@ function initFiltersAndSorting() {
       return isVisible;
     });
 
-    // B. Sort Elements
     if (sortSelect) {
-      const sortBy = sortSelect.value; // 'rating', 'speed', 'price-asc', 'price-desc'
+      const sortBy = sortSelect.value;
       
       visibleItems.sort((a, b) => {
         if (sortBy === 'rating') {
@@ -181,7 +198,6 @@ function initFiltersAndSorting() {
         return 0;
       });
 
-      // C. Re-append items to update DOM order
       visibleItems.forEach(item => {
         compList.appendChild(item);
       });
@@ -243,7 +259,6 @@ function initTOC() {
   }, observerOptions);
 
   headings.forEach(heading => {
-    // Generate IDs dynamically if they are missing
     if (!heading.getAttribute('id')) {
       const textId = heading.textContent
         .toLowerCase()
