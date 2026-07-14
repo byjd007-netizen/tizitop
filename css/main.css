@@ -260,6 +260,8 @@ h3 { font-size: 1.2rem; }
   display: flex;
   align-items: center;
   gap: 28px;
+  margin-left: auto;
+  margin-right: 48px;
 }
 
 .nav-link {
@@ -343,6 +345,7 @@ h3 { font-size: 1.2rem; }
     align-items: flex-start;
     transition: left var(--transition-normal);
     z-index: 999;
+    margin: 0; /* Reset margins for mobile menu overlay */
   }
   
   .nav-menu.active {
