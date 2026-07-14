@@ -61,61 +61,7 @@
       border-color: var(--primary);
       color: #ffffff;
     }
-    /* Archive list style */
-    .archive-list {
-      display: flex;
-      flex-direction: column;
-      border: 1px solid var(--border-color);
-      border-radius: var(--radius-md);
-      overflow: hidden;
-      background-color: var(--bg-secondary);
-    }
-    .archive-item {
-      display: grid;
-      grid-template-columns: 1.5fr 1.5fr 7fr 2fr;
-      align-items: center;
-      padding: 16px 24px;
-      border-bottom: 1px solid var(--border-color);
-      transition: background-color var(--transition-fast);
-    }
-    .archive-item:last-child {
-      border-bottom: none;
-    }
-    .archive-item:hover {
-      background-color: var(--bg-primary);
-    }
-    .archive-title-area {
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-    }
-    .archive-item-title {
-      font-size: 0.95rem;
-      font-weight: 600;
-      color: var(--text-primary);
-    }
-    .archive-item-desc {
-      font-size: 0.8rem;
-      color: var(--text-muted);
-    }
-    .archive-item-date {
-      font-size: 0.8rem;
-      color: var(--text-muted);
-      text-align: right;
-    }
-    @media (max-width: 768px) {
-      .archive-item {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 8px;
-        padding: 16px;
-      }
-      .archive-item-date {
-        text-align: left;
-        margin-top: 4px;
-      }
-    }
+    /* Archive style overridden by main.css horizontal layouts */
   </style>
 </head>
 <body>
@@ -181,57 +127,134 @@
         <button class="cat-nav-btn" data-cat="advanced">高阶进阶</button>
       </div>
 
-      <!-- Archive Column List -->
-      <div class="archive-list" id="articlesContainer">
+      <!-- Archive Column List (Horizontal, Teapotium Style) -->
+      <div class="wiki-list-horizontal" id="articlesContainer">
         <!-- Row 1 -->
-        <div class="archive-item article-card-item" data-category="tutorial" data-title="从零开始：clash verge 全平台上手安装与订阅导入指南">
-          <span class="badge badge-primary" style="justify-content: center; max-width: 80px;">软件教程</span>
-          <span style="font-size: 0.8rem; color: var(--text-muted);">8分钟阅读</span>
-          <div class="archive-title-area">
-            <a href="article.html" class="archive-item-title">从零开始：Clash Verge 全平台上手安装与订阅导入指南</a>
-            <span class="archive-item-desc">Tauri + Rust 编写的 Clash 完美替代版。手把手带您导入订阅与解决常见报错。</span>
+        <a href="article.html" class="wiki-card-horizontal-link article-card-item" data-category="tutorial" data-title="从零开始：clash verge 全平台上手安装与订阅导入指南">
+          <div class="wiki-card-horizontal">
+            <div class="wiki-card-image">
+              <img src="assets/images/rocket.png" alt="Clash Verge 配置指南">
+            </div>
+            <div class="wiki-card-content">
+              <span class="wiki-tag">软件教程</span>
+              <h3 class="wiki-title">从零开始：Clash Verge 全平台上手安装与订阅导入指南</h3>
+              <p class="wiki-desc">Tauri + Rust 编写的 Clash 完美替代版。手把手带您导入订阅与解决常见报错。</p>
+              <div class="wiki-meta">
+                <span>2026-06-15</span>
+                <span>•</span>
+                <span>1820 字</span>
+                <span>•</span>
+                <span>8 分钟</span>
+              </div>
+            </div>
           </div>
-          <span class="archive-item-date">2026-06-15</span>
-        </div>
+        </a>
 
         <!-- Row 2 -->
-        <div class="archive-item article-card-item" data-category="科普" data-title="深度解析 iplc、iepl、bgp 中转与直连节点的本质区别">
-          <span class="badge" style="justify-content: center; max-width: 80px;">线路科普</span>
-          <span style="font-size: 0.8rem; color: var(--text-muted);">12分钟阅读</span>
-          <div class="archive-title-area">
-            <a href="article.html" class="archive-item-title">深度解析 IPLC、IEPL、BGP 中转与直连节点的本质区别</a>
-            <span class="archive-item-desc">详解为什么物理内网专线节点能保证在晚高峰零丢包与超低延迟。</span>
+        <a href="article.html" class="wiki-card-horizontal-link article-card-item" data-category="科普" data-title="深度解析 iplc、iepl、bgp 中转与直连节点的本质区别">
+          <div class="wiki-card-horizontal">
+            <div class="wiki-card-image">
+              <img src="assets/images/globe.png" alt="IPLC 物理专线解析">
+            </div>
+            <div class="wiki-card-content">
+              <span class="wiki-tag">线路科普</span>
+              <h3 class="wiki-title">深度解析 IPLC、IEPL、BGP 中转与直连节点的本质区别</h3>
+              <p class="wiki-desc">详解为什么物理内网专线节点能保证在晚高峰零丢包与超低延迟。</p>
+              <div class="wiki-meta">
+                <span>2026-06-10</span>
+                <span>•</span>
+                <span>2450 字</span>
+                <span>•</span>
+                <span>12 分钟</span>
+              </div>
+            </div>
           </div>
-          <span class="archive-item-date">2026-06-10</span>
-        </div>
+        </a>
 
         <!-- Row 3 -->
-        <div class="archive-item article-card-item" data-category="security" data-title="安全防骗：机场跑路前的五大征兆与资金安全保全方案">
-          <span class="badge" style="justify-content: center; max-width: 80px; color: var(--danger); border-color: rgba(239, 68, 68, 0.15); background-color: rgba(239, 68, 68, 0.05);">安全避坑</span>
-          <span style="font-size: 0.8rem; color: var(--text-muted);">6分钟阅读</span>
-          <div class="archive-title-area">
-            <a href="article.html" class="archive-item-title">安全防骗：机场跑路前的五大征兆与资金安全保全方案</a>
-            <span class="archive-item-desc">避坑核心守则：绝对月付、关注官网工单响应与 TG 群活跃度。</span>
+        <a href="article.html" class="wiki-card-horizontal-link article-card-item" data-category="security" data-title="安全防骗：机场跑路前的五大征兆与资金安全保全方案">
+          <div class="wiki-card-horizontal">
+            <div class="wiki-card-image">
+              <img src="assets/images/faq_illustration.png" alt="机场防割防跑路指南">
+            </div>
+            <div class="wiki-card-content">
+              <span class="wiki-tag" style="color: var(--danger);">安全避坑</span>
+              <h3 class="wiki-title">安全防骗：机场跑路前的五大征兆与资金安全保全方案</h3>
+              <p class="wiki-desc">避坑核心守则：绝对月付、关注官网工单响应与 TG 群活跃度。</p>
+              <div class="wiki-meta">
+                <span>2026-06-08</span>
+                <span>•</span>
+                <span>1340 字</span>
+                <span>•</span>
+                <span>6 分钟</span>
+              </div>
+            </div>
           </div>
-          <span class="archive-item-date">2026-06-08</span>
-        </div>
+        </a>
 
         <!-- Row 4 -->
-        <div class="archive-item article-card-item" data-category="advanced" data-title="全方位绕过 chatgpt / openai 'access denied' 拒绝访问风控指南">
-          <span class="badge" style="justify-content: center; max-width: 80px; color: var(--warning); border-color: rgba(245, 158, 11, 0.15); background-color: rgba(245, 158, 11, 0.05);">高阶进阶</span>
-          <span style="font-size: 0.8rem; color: var(--text-muted);">10分钟阅读</span>
-          <div class="archive-title-area">
-            <a href="article.html" class="archive-item-title">全方位绕过 ChatGPT / OpenAI 'Access Denied' 拒绝访问风控指南</a>
-            <span class="archive-item-desc">使用高纯净度原生住宅双 ISP 节点，完美规避 OpenAI 风控机制。</span>
+        <a href="article.html" class="wiki-card-horizontal-link article-card-item" data-category="advanced" data-title="全方位绕过 chatgpt / openai 'access denied' 拒绝访问风控指南">
+          <div class="wiki-card-horizontal">
+            <div class="wiki-card-image">
+              <img src="assets/images/ranking_hero.png" alt="ChatGPT 访问风控绕过">
+            </div>
+            <div class="wiki-card-content">
+              <span class="wiki-tag" style="color: var(--warning);">高阶进阶</span>
+              <h3 class="wiki-title">全方位绕过 ChatGPT / OpenAI 'Access Denied' 拒绝访问风控指南</h3>
+              <p class="wiki-desc">使用高纯净度原生住宅双 ISP 节点，完美规避 OpenAI 风控机制。</p>
+              <div class="wiki-meta">
+                <span>2026-06-02</span>
+                <span>•</span>
+                <span>1950 字</span>
+                <span>•</span>
+                <span>10 分钟</span>
+              </div>
+            </div>
           </div>
-          <span class="archive-item-date">2026-06-02</span>
-        </div>
+        </a>
 
         <!-- Row 5 -->
-        <div class="archive-item article-card-item" data-category="tutorial" data-title="shadowrocket (小火箭) 节点二维码扫码导入与规则分流精细化配置">
-          <span class="badge badge-primary" style="justify-content: center; max-width: 80px;">软件教程</span>
-          <span style="font-size: 0.8rem; color: var(--text-muted);">7分钟阅读</span>
-          <div class="archive-title-area">
+        <a href="article.html" class="wiki-card-horizontal-link article-card-item" data-category="tutorial" data-title="shadowrocket (小火箭) 节点二维码扫码导入与规则分流精细化配置">
+          <div class="wiki-card-horizontal">
+            <div class="wiki-card-image">
+              <img src="assets/images/kuaili_speedtest.png" alt="Shadowrocket 小火箭配置">
+            </div>
+            <div class="wiki-card-content">
+              <span class="wiki-tag">软件教程</span>
+              <h3 class="wiki-title">Shadowrocket (小火箭) 节点二维码扫码导入与规则分流精细化配置</h3>
+              <p class="wiki-desc">苹果端首选小火箭。介绍规则文件配置方法与分应用路由流程。</p>
+              <div class="wiki-meta">
+                <span>2026-05-28</span>
+                <span>•</span>
+                <span>1620 字</span>
+                <span>•</span>
+                <span>7 分钟</span>
+              </div>
+            </div>
+          </div>
+        </a>
+
+        <!-- Row 6 -->
+        <a href="article.html" class="wiki-card-horizontal-link article-card-item" data-category="科普" data-title="小白翻墙如何选择？详解 vpn 与 机场 (shadowsocks) 的优缺点对比">
+          <div class="wiki-card-horizontal">
+            <div class="wiki-card-image">
+              <img src="assets/images/edgenova_speedtest.png" alt="VPN 与机场对比选购">
+            </div>
+            <div class="wiki-card-content">
+              <span class="wiki-tag">线路科普</span>
+              <h3 class="wiki-title">小白翻墙如何选择？详解 VPN 与 机场 (Shadowsocks) 的优缺点对比</h3>
+              <p class="wiki-desc">分流规则、带宽延迟、协议优化多维度对比，指导小白正确选购。</p>
+              <div class="wiki-meta">
+                <span>2026-05-20</span>
+                <span>•</span>
+                <span>1780 字</span>
+                <span>•</span>
+                <span>9 分钟</span>
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>tle-area">
             <a href="article.html" class="archive-item-title">Shadowrocket (小火箭) 节点二维码扫码导入与规则分流精细化配置</a>
             <span class="archive-item-desc">苹果端首选小火箭。介绍规则文件配置方法与分应用路由流程。</span>
           </div>
@@ -343,7 +366,7 @@
           const searchMatch = !searchQuery || title.includes(searchQuery);
 
           if (catMatch && searchMatch) {
-            card.style.display = 'grid';
+            card.style.display = 'block';
           } else {
             card.style.display = 'none';
           }
