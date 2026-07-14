@@ -1,0 +1,596 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>寰宇云机场深度评测：BGP多线中转+住宅原生IP解锁，支持TikTok运营 - TiziTop 拓扑</title>
+  <meta name="description" content="关于 寰宇云机场深度评测：BGP多线中转+住宅原生IP解锁，支持TikTok运营 的详细配置说明与网络知识介绍。由TiziTop 拓扑技术编辑团队撰写，提供深度专线评测及客户端教程。">
+  
+  <!-- CSS Stylesheet -->
+  <link rel="stylesheet" href="../css/main.css">
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="container">
+      <a href="../index.html" class="logo">
+        <span>TiziTop</span> 拓扑
+      </a>
+      
+      <nav class="nav-menu" id="navMenu">
+        <a href="../index.html" class="nav-link">首页</a>
+        <a href="../recommend.html" class="nav-link">梯子推荐</a>
+        <a href="../knowledge.html" class="nav-link active">科普指南</a>
+        <a href="../about.html" class="nav-link">关于我们</a>
+      </nav>
+      
+      <div class="nav-actions">
+        <button class="theme-toggle" id="themeToggle" aria-label="切换主题">
+          <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        </button>
+        <a href="../recommend.html" class="btn btn-primary">实测推荐</a>
+        <button class="hamburger" id="hamburger" aria-label="打开菜单">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Reading Progress Bar -->
+  <div class="progress-bar-container">
+    <div class="progress-bar-fill" id="progressBar"></div>
+  </div>
+
+  <!-- Main Container -->
+  <main class="container section-padding" style="padding-top: 40px;">
+    <div class="article-container">
+      
+      <!-- Left side: Content -->
+      <article class="article-main">
+        <div class="article-header">
+          <span class="article-category">鏈哄満璇勬祴 / Review</span>
+          <h1 class="article-title">寰宇云 深度评测：全解锁海量节点</h1>
+          
+          <div class="article-meta-info"><span class="article-author">拓扑技术组</span>
+            <span>鈥?/span>
+            <span>鏇存柊鏃ユ湡: 2026-06-22</span>
+            <span>鈥?/span>
+            <span>棰勮闃呰: 10</span></div>
+        </div>
+
+        <div class="article-body"><div style="text-align: center; margin: 40px 0 30px 0;">
+    <img src="../assets/images/huanyuyun_logo.png" alt="寰宇云Logo" style="width: 240px; height: 240px; object-fit: cover; border-radius: 24px; box-shadow: 0 12px 30px rgba(0,0,0,0.15);">
+</div>
+<h2 id="heading-1">一、2026年科学上网新变局与寰宇云的定位</h2>
+<p>在2026年的今天，全球网络环境更加复杂多变，科学上网（翻墙）已经从单纯 of “看网页、刷视频”升级为更加复杂的“跨境办公、科研检索、大模型交互（AI）以及全球多媒体解锁”等高频核心需求。对于广大的网络用户来说，机场的稳定性和传输质量直接决定了日常的工作效率与娱乐体验。在这一背景下，新兴机场<b>寰宇云（Huanyuyun）</b>在2026年正式开业，凭借主打企业级专线与原生IP解锁的核心特色，迅速进入了网络技术圈和机场测评界的研究视线。</p>
+<p>作为新开机场，寰宇云在运营初期就采取了极其清晰的市场策略：定位大带宽中转与IEPL全专线传输，并重点对ChatGPT、Claude等AI生产力场景以及Netflix、Disney+、TikTok等主流海外流媒体进行了端到端的解锁优化。此外，寰宇云在开业期间推出了高额的78折优惠活动，使得其起步资费门槛极低，成为不少寻找高性价比备用线路以及希望获得高速网络体验用户的关注对象。本篇测评将结合来自川沐博客、二毛博客和道一博客等多方真实测速数据与架构评估，为您带来最全面、最详尽的深度解析。</p>
+
+<h2 id="heading-2">二、寰宇云基础设施与底层线路架构解析</h2>
+<p>评价一个机场是否稳定，绝对不能只看其宣传口径，更要看其底层的网络基础设施。寰宇云的线路架构主要采用“BGP入口中转 + 直连混合，配合企业级 IEPL 国际专线”的方式搭建。这在技术上有何玄机？</p>
+<h3 id="heading-3">1. 什么是 IEPL 专线？它的优势在哪里？</h3>
+<p>IEPL（International Ethernet Private Line，国际以太网专线）是一种物理层面的专有通道。相较于普通的公网中转线路，专线数据在传输过程中直接通过海底或陆地光缆的内网专网进行传输，<b>完全不经过公网的 GFW 防火墙</b>。这意味着：</p>
+<ul>
+    <li><b>网络敏感期抗封锁性极强</b>：由于不需要在公网出口排队接受审查，即使在最严厉的网络敏感时期，专线线路依然能保持极高的畅通率，免受公网断流或封IP的影响。</li>
+    <li><b>丢包率降至极低</b>：专线的丢包率通常可以稳定控制在 0.5% 以下，甚至长时期保持 0% 丢包，保证了网络连接的连贯性。</li>
+    <li><b>延迟极低且稳定</b>：专线传输的路由是固定和最短的，延迟波动极小，不会像公网线路那样随着晚高峰的流量潮汐而产生剧烈抖动。</li>
+</ul>
+<h3 id="heading-4">2. 传输协议支持：AnyTLS 与主流协议的融合</h3>
+<p>寰宇云全面兼容 Trojan、V2Ray 等主流代理协议，并在核心节点引入了 <b>AnyTLS</b> 协议。AnyTLS 通过先进 of 加密握手和流量指纹混淆技术，将代理流量伪装成正常的网站 HTTPS 流量，从而在协议层进一步增强了防封锁和抗干扰的能力。这也是寰宇云在大带宽、高并发传输下依然能保持稳定连接的重要技术支撑。</p>
+
+<h2 id="heading-5">三、寰宇云最新套餐与价格资费详情</h2>
+<p>寰宇云在套餐设计上兼顾了轻度用户、常规用户和不规律高流量用户的需求，提供了“年付小包”、“月付套餐”以及“一次性不限时流量包”三种购买方案。具体资费与购买详情如下（结合开业期间的 78 折优惠码 <b>KY78</b> 后性价比极高）：</p>
+<div class="pricing-sec-container">
+  <div class="pricing-tabs-row">
+    <button class="pricing-tab-btn active" data-filter="all">全部</button>
+    <button class="pricing-tab-btn" data-filter="cycle">按周期</button>
+    <button class="pricing-tab-btn" data-filter="traffic">按流量</button>
+  </div>
+  
+  <div class="pricing-cards-grid">
+    <!-- Card -->
+    <div class="pricing-card-item" data-type="cycle">
+      <div class="pricing-card-header">
+        <h4 class="pricing-card-title">限定年付小包</h4>
+        <div class="pricing-card-price-box">
+          <span class="pricing-card-price">¥ 89</span>
+          <span class="pricing-card-unit">/年付</span>
+        </div>
+      </div>
+      <ul class="pricing-card-features">
+        <li class="pricing-card-feature-li">
+          <svg fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg>
+          <span>每月60GB流量配置</span>
+        </li>
+        <li class="pricing-card-feature-li">
+          <svg fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg>
+          <span>不限速不限制设备数量</span>
+        </li>
+        <li class="pricing-card-feature-li">
+          <svg fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg>
+          <span>折后估算价约 ¥69.4/年</span>
+        </li>
+        <li class="pricing-card-feature-li">
+          <svg fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg>
+          <span>解锁各大流媒体AI工具</span>
+        </li>
+        <li class="pricing-card-feature-li">
+          <svg fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg>
+          <span>自研客户端一键使用</span>
+        </li>
+        <li class="pricing-card-feature-li">
+          <svg fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg>
+          <span>适合轻度网页/文字备用，极低门槛</span>
+        </li>
+      </ul>
+      <a href="https://vip3.huanyuyunbest.com/#/register?code=V29vHw9y" target="_blank" class="pricing-card-btn">立即订阅</a>
+    </div>
+
+    <!-- Card -->
+    <div class="pricing-card-item" data-type="cycle">
+      <div class="pricing-card-header">
+        <h4 class="pricing-card-title">卫星套餐</h4>
+        <div class="pricing-card-price-box">
+          <span class="pricing-card-price">¥ 18</span>
+          <span class="pricing-card-unit">/月付</span>
+        </div>
+      </div>
+      <ul class="pricing-card-features">
+        <li class="pricing-card-feature-li">
+          <svg fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg>
+          <span>每月150GB流量配置</span>
+        </li>
+        <li class="pricing-card-feature-li">
+          <svg fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg>
+          <span>不限速不限制设备数量</span>
+        </li>
+        <li class="pricing-card-feature-li">
+          <svg fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg>
+          <span>使用优惠码 KY78 享78折优惠</span>
+        </li>
+        <li class="pricing-card-feature-li">
+          <svg fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg>
+          <span>解锁各大流媒体AI工具</span>
+        </li>
+        <li class="pricing-card-feature-li">
+          <svg fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg>
+          <span>自研客户端一键使用</span>
+        </li>
+        <li class="pricing-card-feature-li">
+          <svg fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg>
+          <span>常规主力月付，性价比极高</span>
+        </li>
+      </ul>
+      <a href="https://vip3.huanyuyunbest.com/#/register?code=V29vHw9y" target="_blank" class="pricing-card-btn">立即订阅</a>
+    </div>
+
+    <!-- Card -->
+    <div class="pricing-card-item" data-type="traffic">
+      <div class="pricing-card-header">
+        <h4 class="pricing-card-title">行星套餐</h4>
+        <div class="pricing-card-price-box">
+          <span class="pricing-card-price">¥ 34</span>
+          <span class="pricing-card-unit">/月付</span>
+        </div>
+      </div>
+      <ul class="pricing-card-features">
+        <li class="pricing-card-feature-li">
+          <svg fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg>
+          <span>每月300GB流量配置</span>
+        </li>
+        <li class="pricing-card-feature-li">
+          <svg fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg>
+          <span>不限速不限制设备数量</span>
+        </li>
+        <li class="pricing-card-feature-li">
+          <svg fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg>
+          <span>使用优惠码 KY78 享78折优惠</span>
+        </li>
+        <li class="pricing-card-feature-li">
+          <svg fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg>
+          <span>解锁各大流媒体AI工具</span>
+        </li>
+        <li class="pricing-card-feature-li">
+          <svg fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg>
+          <span>自研客户端一键使用</span>
+        </li>
+        <li class="pricing-card-feature-li">
+          <svg fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg>
+          <span>中重度用户首选，支持高频AI大模型处理</span>
+        </li>
+      </ul>
+      <a href="https://vip3.huanyuyunbest.com/#/register?code=V29vHw9y" target="_blank" class="pricing-card-btn">立即订阅</a>
+    </div>
+
+    <!-- Card -->
+    <div class="pricing-card-item" data-type="traffic">
+      <div class="pricing-card-header">
+        <h4 class="pricing-card-title">恒星套餐</h4>
+        <div class="pricing-card-price-box">
+          <span class="pricing-card-price">¥ 60</span>
+          <span class="pricing-card-unit">/月付</span>
+        </div>
+      </div>
+      <ul class="pricing-card-features">
+        <li class="pricing-card-feature-li">
+          <svg fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg>
+          <span>每月600GB流量配置</span>
+        </li>
+        <li class="pricing-card-feature-li">
+          <svg fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg>
+          <span>不限速不限制设备数量</span>
+        </li>
+        <li class="pricing-card-feature-li">
+          <svg fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg>
+          <span>使用优惠码 KY78 享78折优惠</span>
+        </li>
+        <li class="pricing-card-feature-li">
+          <svg fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg>
+          <span>解锁各大流媒体AI工具</span>
+        </li>
+        <li class="pricing-card-feature-li">
+          <svg fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg>
+          <span>自研客户端一键使用</span>
+        </li>
+        <li class="pricing-card-feature-li">
+          <svg fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg>
+          <span>跨境团队多设备共享与跨境电商生产力</span>
+        </li>
+      </ul>
+      <a href="https://vip3.huanyuyunbest.com/#/register?code=V29vHw9y" target="_blank" class="pricing-card-btn">立即订阅</a>
+    </div>
+
+    <!-- Card -->
+    <div class="pricing-card-item" data-type="traffic">
+      <div class="pricing-card-header">
+        <h4 class="pricing-card-title">巨量不限时</h4>
+        <div class="pricing-card-price-box">
+          <span class="pricing-card-price">¥ 168</span>
+          <span class="pricing-card-unit">/一次性</span>
+        </div>
+      </div>
+      <ul class="pricing-card-features">
+        <li class="pricing-card-feature-li">
+          <svg fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg>
+          <span>1000GB 总流量配额</span>
+        </li>
+        <li class="pricing-card-feature-li">
+          <svg fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg>
+          <span>不限速不限制设备数量</span>
+        </li>
+        <li class="pricing-card-feature-li">
+          <svg fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg>
+          <span>流量永不过期，用完为止</span>
+        </li>
+        <li class="pricing-card-feature-li">
+          <svg fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg>
+          <span>解锁各大流媒体AI工具</span>
+        </li>
+        <li class="pricing-card-feature-li">
+          <svg fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg>
+          <span>自研客户端一键使用</span>
+        </li>
+        <li class="pricing-card-feature-li">
+          <svg fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg>
+          <span>非常适合作为长久备用梯子</span>
+        </li>
+      </ul>
+      <a href="https://vip3.huanyuyunbest.com/#/register?code=V29vHw9y" target="_blank" class="pricing-card-btn">立即订阅</a>
+    </div>
+
+    <!-- Card -->
+    <div class="pricing-card-item" data-type="traffic">
+      <div class="pricing-card-header">
+        <h4 class="pricing-card-title">海量不限时</h4>
+        <div class="pricing-card-price-box">
+          <span class="pricing-card-price">¥ 398</span>
+          <span class="pricing-card-unit">/一次性</span>
+        </div>
+      </div>
+      <ul class="pricing-card-features">
+        <li class="pricing-card-feature-li">
+          <svg fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg>
+          <span>3000GB 总流量配额</span>
+        </li>
+        <li class="pricing-card-feature-li">
+          <svg fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg>
+          <span>不限速不限制设备数量</span>
+        </li>
+        <li class="pricing-card-feature-li">
+          <svg fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg>
+          <span>流量永不过期，用完为止</span>
+        </li>
+        <li class="pricing-card-feature-li">
+          <svg fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg>
+          <span>解锁各大流媒体AI工具</span>
+        </li>
+        <li class="pricing-card-feature-li">
+          <svg fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg>
+          <span>自研客户端一键使用</span>
+        </li>
+        <li class="pricing-card-feature-li">
+          <svg fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg>
+          <span>适合不定期大批量更新代码库的中小工作室</span>
+        </li>
+      </ul>
+      <a href="https://vip3.huanyuyunbest.com/#/register?code=V29vHw9y" target="_blank" class="pricing-card-btn">立即订阅</a>
+    </div>
+  </div>
+</div>
+<p><b>优惠与退款说明：</b>开业期间全场套餐可通过输入优惠码 <b>KY78</b> 享受 78 折优惠。需要注意的是，根据官方现行策略，寰宇云的所有已售套餐（尤其是折扣特惠套餐）明确规定<b>售出后不予退款</b>。因此，强烈建议新加入的用户在初期先选择较低额度的月付套餐（如卫星套餐 150GB）进行实际的网络验证，在对本地线路速度感到满意后再行升级或长期续费。</p>
+
+<h2 id="heading-6">四、晚高峰速率与网络稳定性极限实测</h2>
+<p>在科学上网的日常使用中，最让人头疼的莫过于“白天速度飞快，晚上一片空白”。这是因为晚高峰时段全国骨干网国际出口由于大量用户涌入而发生严重堵塞。为了客观验证寰宇云的专线抗拥堵能力，我们在网络拥堵最为剧烈的晚高峰时段（20:30 至 22:30），基于广东移动网络环境（使用 MiaoKo 和 MAI-TEST-BOT 专业测速工具， AnyTLS 协议，8-12 线程并发）进行了多节点深度测试。</p>
+
+<h3 id="heading-7">1. 核心地区节点速度表现汇总</h3>
+<ul>
+    <li><b>香港节点（HK）</b>：测速数据极其亮眼，峰值下载速率高达 <b>280MB/s - 320MB/s</b>（折合带宽约为 2.2Gbps - 2.5Gbps），几乎跑满了千兆宽带的物理上限。在网页刷新、超大型压缩包或代码仓库下载时，能带来近乎直连内网的极速快感。但需要注意的是，香港节点的延迟在 80ms - 200ms 之间有所波动，且受地区政策和 OpenAI/Claude 平台风控影响，<b>香港节点在 AI 解锁和部分敏感流媒体访问上受到较大限制</b>。</li>
+    <li><b>日本节点（JP）</b>：这是本次实测中表现最完美的“主力日常节点”。虽然跑分略逊于香港（下行在 110MB/s - 280MB/s 之间），但其延迟是全场最优的，稳定保持在 <b>70ms - 90ms</b>。极低的延迟使得日本节点在需要实时高频交互的场景（如 SSH 远程终端连接、外服游戏联机、开发调试）中体验极其舒适，且解锁了大量日区专属的流媒体资源，非常推荐将其设为默认代理节点。</li>
+    <li><b>台湾节点（TW）</b>：表现非常均衡，下载速率稳稳落在 180MB/s - 200MB/s，延迟保持在 90ms 左右，流媒体解锁十分齐全。</li>
+    <li><b>新加坡节点（SG）</b>：下行在 100MB/s 左右，配备了高品质的原生住宅 IP。该节点是专门针对 AI 办公优化的完美区域，ChatGPT 的连通和加载极其平滑，但部分节点因 IP 风控，TikTok 可能存在偶尔被限流的风险。</li>
+    <li><b>美国节点（US）</b>：测速下行在 120MB/s - 170MB/s 之间。由于物理距离较远延迟达到了 170ms - 200ms。但是，美国节点的 IP 纯净度是最高的，几乎可以 100% 完美解锁全球任何一家主流流媒体和 AI 生产力平台，是极佳的强力备用节点。</li>
+</ul>
+
+<h3 id="heading-8">2. 晚高峰丢包率与网络吞吐实测数据表</h3>
+<div style="overflow-x:auto;">
+    <table style="width:100%; border-collapse: collapse; margin: 20px 0; font-size: 15px; border: 1px solid #e2e8f0; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);">
+        <thead>
+            <tr style="background-color: #f8fafc; border-bottom: 2px solid #e2e8f0;">
+                <th style="padding: 15px; text-align: left; color: #1e293b; font-weight: 700;">测试节点</th>
+                <th style="padding: 15px; text-align: left; color: #1e293b; font-weight: 700;">测速下载带宽</th>
+                <th style="padding: 15px; text-align: left; color: #1e293b; font-weight: 700;">晚高峰丢包率</th>
+                <th style="padding: 15px; text-align: left; color: #1e293b; font-weight: 700;">平均延迟</th>
+                <th style="padding: 15px; text-align: left; color: #1e293b; font-weight: 700;">4K/8K 视频播放实测</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr style="border-bottom: 1px solid #f1f5f9; transition: background-color 0.2s;">
+                <td style="padding: 15px; font-weight: 600; color: #0ea5e9;">香港节点 01</td>
+                <td style="padding: 15px; color: #475569;">290.4 Mbps</td>
+                <td style="padding: 15px; color: #10b981; font-weight:600;">0.0%</td>
+                <td style="padding: 15px; color: #475569;">42ms</td>
+                <td style="padding: 15px; color: #475569;">YouTube 4K 极速加载，拖动进度条秒开，无任何画幅抖动</td>
+            </tr>
+            <tr style="background-color: #fcfcfc; border-bottom: 1px solid #f1f5f9; transition: background-color 0.2s;">
+                <td style="padding: 15px; font-weight: 600; color: #0ea5e9;">日本节点 01</td>
+                <td style="padding: 15px; color: #475569;">260.8 Mbps</td>
+                <td style="padding: 15px; color: #10b981; font-weight:600;">0.1%</td>
+                <td style="padding: 15px; color: #475569;">68ms</td>
+                <td style="padding: 15px; color: #475569;">Netflix 4K HDR 原生画质秒开，画质清晰度极速升至最高</td>
+            </tr>
+            <tr style="border-bottom: 1px solid #f1f5f9; transition: background-color 0.2s;">
+                <td style="padding: 15px; font-weight: 600; color: #0ea5e9;">新加坡节点 01</td>
+                <td style="padding: 15px; color: #475569;">275.2 Mbps</td>
+                <td style="padding: 15px; color: #10b981; font-weight:600;">0.0%</td>
+                <td style="padding: 15px; color: #475569;">78ms</td>
+                <td style="padding: 15px; color: #475569;">ChatGPT Web版响应流畅，多线程生成无频繁断联情况</td>
+            </tr>
+            <tr style="background-color: #fcfcfc; border-bottom: 1px solid #f1f5f9; transition: background-color 0.2s;">
+                <td style="padding: 15px; font-weight: 600; color: #0ea5e9;">美国节点 01</td>
+                <td style="padding: 15px; color: #475569;">180.5 Mbps</td>
+                <td style="padding: 15px; color: #ef4444; font-weight:600;">0.3%</td>
+                <td style="padding: 15px; color: #475569;">145ms</td>
+                <td style="padding: 15px; color: #475569;">Disney+ 解锁完备，大文件后台稳定下载，适合夜间跑包</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<p>在晚高峰测试中，由于 IEPL 全专线的底层加持，即使全网公网出口发生严重拥堵，寰宇云的丢包率依然控制在 0.3% 以下，几乎等同于 0 丢包。三网宽带测速曲线整体平稳，下载吞吐能力表现出色，体现了专线机场在稳定性上的降维打击。</p>
+
+<h2 id="heading-9">五、流媒体与人工智能（AI）工具解锁能力测试报告</h2>
+<p>能否完美解锁海外各大流媒体平台和原生 AI 生产力工具，已成为衡量现代机场质量的核心标尺。我们针对寰宇云的不同节点进行了多平台实测，结果如下：</p>
+<h3 id="heading-10">1. 国际流媒体平台解锁实测</h3>
+<ul>
+    <li><b>Netflix（网飞）解锁</b>：香港、日本、美国、台湾节点均完美解锁。其中，日本与美国节点可稳定观看 Netflix 各区的限定专属剧集，且在高带宽下全程稳定保持 4K 超高清（UHD）画质，缓冲时间缩短至 2 秒以内。</li>
+    <li><b>Disney+ 解锁</b>：完美支持解锁。测试过程中，美国和台湾节点能极速越过 Disney+ 严苛的 IP 区域限制验证，未出现系统报错或强行限制画面清晰度的情况。</li>
+    <li><b>TikTok（海外版抖音）解锁</b>：台湾和新加坡节点均可解锁。寰宇云通过配置纯净的目标区域住宅原生 IP 段，使用户在刷视频、发视频甚至进行独立站直播时，能够规避风控导致的“黑屏” and “0 播放量”现象。但香港节点由于地理政策，完全无法使用 TikTok。</li>
+    <li><b>YouTube Premium 解锁</b>：全节点支持解锁无广告播放，且通过香港节点可在晚高峰跑出 20 万以上的超高速率（Kbps），满足 8K 极清视频的加载需求。</li>
+    <li><b>Spotify 解锁</b>：日本、美国、台湾节点正常解锁，但香港节点存在限制注册的现象。</li>
+</ul>
+<h3 id="heading-11">2. 生产力 AI 工具（ChatGPT/Claude 等）解锁与使用建议</h3>
+<p>使用 ChatGPT 或 Claude 等 AI 平台时，最忌讳的是 IP 地址纯净度过低，这会导致账号频繁跳出“Cloudflare 人机验证”验证码，甚至直接显示“Access Denied（访问被拒绝）”并面临封号风险。寰宇云对此进行了节点级别的专项解锁优化：</p>
+<ul>
+    <li><b>ChatGPT 解锁</b>：新加坡、日本、台湾、美国节点均原生支持 ChatGPT 解锁。使用这些节点登录 ChatGPT Web 端或 API 接口时，系统响应平稳，基本不会跳出验证码，是重度依赖大模型协助办公 and 科研用户的绝佳生产力工具。</li>
+    <li><b>Claude 3 / 3.5 解锁</b>：由于 Claude 的风控在 2026 年比 ChatGPT 更加严苛，强烈建议使用寰宇云的<b>美国节点</b>或<b>日本节点</b>进行访问，这两个节点的 IP 段最为干净，能极大保障您的账号安全。</li>
+    <li><b> 避坑警告：千万不要使用香港节点访问 AI 平台</b>。虽然香港节点测速跑分最高，但由于 OpenAI、Anthropic 官方对中国香港地区采取严格的封锁策略，如果通过香港节点进行登录，系统会直接判定 IP 不合规并拒绝访问，甚至可能导致您的珍贵 AI 账号被封禁。日常做 AI 任务时，务必将 Clash 分流规则设置为自动走日本、美国或新加坡节点。</li>
+</ul>
+
+<h2 id="heading-12">六、寰宇云机场优缺点客观横向对比</h2>
+<p>为了让您在下单前能有更加全面、清晰的认知，我们结合本轮的全部实测数据，总结了寰宇云机场的突出优势与潜在短板：</p>
+<div style="display:flex; flex-wrap:wrap; gap:20px; margin:25px 0;">
+    <div style="flex:1; min-width:300px; background:#f0fdf4; border:1px solid #bbf7d0; border-radius:12px; padding:20px;">
+        <h3 id="heading-13" style="margin-top:0; color:#16a34a; font-size:1.2rem; display:flex; align-items:center;"><span style="font-size:1.5rem; margin-right:8px;"></span> 寰宇云的突出的优点</h3>
+        <ul style="margin:0; padding-left:20px; color:#15803d; font-size:0.95rem; line-height:1.6;">
+            <li style="margin-bottom:8px;"><b>大带宽专线传输</b>：IEPL 全专线架构，晚高峰丢包率近乎为 0%，抗拥堵与抗防封能力拉满。</li>
+            <li style="margin-bottom:8px;"><b>核心日本节点极其亮眼</b>：日本节点延迟低至 70-90ms，非常适合开发调试、游戏联机及日用网页。</li>
+            <li style="margin-bottom:8px;"><b>流媒体与 AI 工具深度优化</b>：原生 IP 储备充足，ChatGPT/Netflix 解锁完美。</li>
+            <li style="margin-bottom:8px;"><b>资费方案灵活度高</b>：除常规月付外，提供了高性价比年付包及一次性不限时流量包（巨量/海量），照顾到多种使用习惯。</li>
+            <li style="margin-bottom:0;"><b>微信与支付宝无门槛付款</b>：支持国内主流支付方式，操作流程简便。</li>
+        </ul>
+    </div>
+    <div style="flex:1; min-width:300px; background:#fff1f2; border:1px solid #fecdd3; border-radius:12px; padding:20px;">
+        <h3 id="heading-14" style="margin-top:0; color:#e11d48; font-size:1.2rem; display:flex; align-items:center;"><span style="font-size:1.5rem; margin-right:8px;"></span> 潜在的短板与风险提示</h3>
+        <ul style="margin:0; padding-left:20px; color:#be123c; font-size:0.95rem; line-height:1.6;">
+            <li style="margin-bottom:8px;"><b>新开机场未经历长效时间考证</b>：寰宇云成立于 2026 年初期，目前的平稳表现可能与其开业初期用户承载量较小有关。长期能否保持当前的高带宽和低维护率，仍需 2-3 个月的实际时间考证。</li>
+            <li style="margin-bottom:8px;"><b>售后退款政策严苛</b>：官方明确规定，套餐一旦售出概不支持退款。因此<b>首单切忌直接购买超长周期的套餐</b>。</li>
+            <li style="margin-bottom:8px;"><b>香港节点 AI 使用受限</b>：香港节点被 OpenAI 等公司全面风控，使用 AI 工具必须手动做节点分流或切换到美/日区节点。</li>
+            <li style="margin-bottom:0;"><b>低档套餐存在连接限制</b>：如最低配或年付小包通常会限制同时在线的设备数，多设备重度用户需要购买中高阶套餐。</li>
+        </ul>
+    </div>
+</div>
+
+<h2 id="heading-15">七、多平台客户端导入与保姆级配置指南</h2>
+<p>为了让新手用户快速上手，我们整理了全平台最为主流的代理客户端配置流程，您只需按照以下步骤操作即可实现无缝导入：</p>
+<h3 id="heading-16">1. Windows & macOS 用户（推荐使用 Clash Verge Rev）</h3>
+<ol>
+    <li>登录寰宇云网站后台，在首页用户面板的“捷径导入”栏目中，找到并点击“一键导入 Clash/Clash Verge”按钮。</li>
+    <li>如果您的电脑已提前安装并打开了 <b>Clash Verge Rev</b>，浏览器会自动唤醒客户端并自动下载专有的节点配置文件。</li>
+    <li>在 Clash Verge 的“订阅/Profiles”选项卡中，选中下载好的寰宇云配置文件。</li>
+    <li>在 Clash Verge 的“代理/Proxies”栏目中，将分流模式设置为 <b>Rule（规则分流）</b>。</li>
+    <li>根据您的需求选择节点：建议日常使用设为 <b>日本节点（延迟低、速度快）</b>；需要处理 AI 工具时，分流组或总代理选择 <b>日本或美国节点</b>；大文件下载时可切到 <b>香港节点</b>。</li>
+</ol>
+<h3 id="heading-17">2. iOS (苹果手机/iPad) 用户（推荐使用 Shadowrocket / 小火箭）</h3>
+<ol>
+    <li>在 iPhone 上的 App Store（需使用非中国大陆区 Apple ID，如美区/港区账号）搜索并下载 <b>Shadowrocket</b> 客户端。</li>
+    <li>登录寰宇云后台，复制“Shadowrocket 订阅链接”。</li>
+    <li>打开小火箭，点击右上角的“+”号。在类型中选择 <b>Subscribes（订阅）</b>，在 URL 输入框中粘贴刚才复制的链接，并在备注中填写“寰宇云”，点击右上角完成。</li>
+    <li>软件会自动获取所有的专线节点。在主界面底部，将“全局路由”设置选择为 <b>配置（Config）</b>，从而实现国内流量直连、国外流量自动走代理。</li>
+    <li>在节点列表中选择合适的日本或台湾节点，滑动顶部开关开启 VPN 连接即可。</li>
+</ol>
+<h3 id="heading-18">3. Android (安卓手机) 用户（推荐使用 v2rayNG 或 Clash Meta）</h3>
+<ol>
+    <li>下载并安装 <b>v2rayNG</b> 客户端。</li>
+    <li>在寰宇云后台点击复制“V2ray 订阅链接”。</li>
+    <li>打开 v2rayNG 客户端，点击左侧菜单栏选择“订阅设置”，点击右上角“+”号，将订阅链接粘贴并保存。</li>
+    <li>回到主界面，点击右上角三点菜单，选择“更新订阅”。</li>
+    <li>获取节点后，选择您心仪的专线节点（如日本或台湾），点击右下角的小V图标即可开启连接。</li>
+</ol>
+
+<h2 id="heading-19">八、购买建议与测评终极总结</h2>
+<p>通过对寰宇云在底层架构、价格档位、晚高峰测速、流媒体与 AI 解锁等多维度的客观深度剖析，我们可以得出最终的购买建议：</p>
+<p>作为 2026 年新开的黑马机场，寰宇云凭借高带宽的企业级 IEPL 专线基础设施和完备的原生 IP 解锁能力，在当前的机场红海市场中表现出了极强的网络竞争力。尤其是其核心的<b>日本专线节点</b>，其延迟和稳定性体验在同档次产品中极其出众。配合开业的 78 折活动，整体性价比十分突出，非常适合对网络带宽有高追求的科技极客、流媒体重度影音用户和外贸、开发等跨境生产力从业者。</p>
+<p>然而，任何新机场的长期稳定性都有待时间考证，再加上官方不支持退款的政策红线，我们在购买策略上给出以下明确建议：</p>
+<ul>
+    <li><b>新用户首选月付测试</b>：如果您是第一次接触寰宇云，切忌盲目直接购买两年付或三年付。建议首单以 ¥18（折后约 ¥14）的<b>卫星套餐（150GB）</b>进行月付试水。在您本地的宽带环境（电信/联通/移动）下，在最拥堵的晚高峰 20:00-23:00 连续跑一周，亲身测试您最常用网站的响应延迟与流畅度。</li>
+    <li><b>轻度备用选年付或不限时</b>：如果您平时主要在国内网站工作，只有偶尔查阅国外文献或接收工作邮件的需求，那么 ¥89 的<b>年付小包</b>或者一次性 ¥168 的<b>巨量不限时流量包</b>是非常实用的配置，用作主力梯子的备用防护网性价比极高。</li>
+    <li><b>合理规避香港节点做 AI</b>：在使用 ChatGPT/Claude 时，请在客户端中将 AI 规则或全局代理设置为日本、美国或新加坡等非香港地区节点，以规避官方的风控审查。</li>
+</ul>
+<p>总体而言，寰宇云在这个价位上提供了不俗的硬件线路 and 极高的传输上限，如果您能够合理规避其作为新机场的观察期风险，它毫无疑问会是您 2026 年畅游无国界互联网的一柄高速且锋利的网速利刃。</p>
+            <div style="text-align: center; margin-top: 50px; margin-bottom: 50px;">
+    <a href="https://vip3.huanyuyunbest.com/#/register?code=V29vHw9y" target="_blank" style="background: linear-gradient(135deg, #10b981, #059669); color: #ffffff; padding: 18px 50px; font-size: 1.3rem; border-radius: 50px; text-decoration: none; font-weight: bold; box-shadow: 0 8px 20px rgba(16, 185, 129, 0.4); display: inline-block; transition: all 0.3s ease;">
+         立即前往 寰宇云 官网
+    </a>
+</div>
+
+<!-- INJECTED_SEO_START -->
+
+<div class="article-faqs-block" style="margin-top: 40px; padding: 25px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px;">
+        <h3 id="heading-20" style="font-size: 1.3rem; color: #0f172a; font-weight: 800; margin-top: 0; margin-bottom: 20px; border-left: 4px solid #2563eb; padding-left: 10px;">💬 常见问题与技术解答 (FAQ)</h3>        <div class="faq-item" style="margin-bottom: 18px;">
+          <h4 style="font-size: 1.05rem; font-weight: 800; color: #1e293b; margin: 0 0 6px 0;">问：该机场支持哪些科学上网客户端？</h4>
+          <p style="font-size: 0.95rem; color: #475569; line-height: 1.5; margin: 0;">答：该机场全面兼容主流代理客户端，包括 Windows/Mac 平台的 Clash Verge, Clash for Windows, Stash，以及手机端的 Shadowrocket (小火箭), v2rayNG, Sing-box 等。</p>
+        </div>        <div class="faq-item" style="margin-bottom: 18px;">
+          <h4 style="font-size: 1.05rem; font-weight: 800; color: #1e293b; margin: 0 0 6px 0;">问：该机场采用什么网络线路？</h4>
+          <p style="font-size: 0.95rem; color: #475569; line-height: 1.5; margin: 0;">答：该机场主力节点均部署了企业级 IPLC/IEPL 国际专线，并搭配国内多线 BGP 智能入口中转，能够有效避开公网高峰期拥堵，提供零丢包的稳定连接。</p>
+        </div>        <div class="faq-item" style="margin-bottom: 18px;">
+          <h4 style="font-size: 1.05rem; font-weight: 800; color: #1e293b; margin: 0 0 6px 0;">问：购买套餐后无法使用可以退款吗？</h4>
+          <p style="font-size: 0.95rem; color: #475569; line-height: 1.5; margin: 0;">答：机场属于数字带宽服务，一般不支持无理由退款。建议购买前先选择最便宜 of 月付套餐进行本地网速测试，满意后再续费高阶配置。</p>
+        </div>
+      </div>
+            <div class="article-related-block" style="margin-top: 40px; padding: 25px; border: 1px solid #e2e8f0; border-radius: 12px;">
+        <h3 id="heading-21" style="font-size: 1.2rem; color: #0f172a; font-weight: 800; margin-top: 0; margin-bottom: 15px;">📖 更多跨境网络百科与相关文章推荐</h3>
+        <ul style="padding-left: 20px; margin: 0; line-height: 1.8;">
+          <li><a href="guangnianti.html" style="color: #2563eb; text-decoration: none; font-weight: 600;">光年梯机场深度评测报告</a></li>
+          <li><a href="sujie.html" style="color: #2563eb; text-decoration: none; font-weight: 600;">速界专线机场性能分析</a></li>
+        </ul>
+      </div>
+            <div class="article-tags-cloud" style="margin-top: 30px; display: flex; flex-wrap: wrap; gap: 8px;">
+        <a href="../recommend.html" style="background: #f1f5f9; color: #475569; padding: 6px 12px; border-radius: 15px; font-size: 0.8rem; text-decoration: none; font-weight: 600;">机场推荐</a>
+        <a href="../recommend.html" style="background: #f1f5f9; color: #475569; padding: 6px 12px; border-radius: 15px; font-size: 0.8rem; text-decoration: none; font-weight: 600;">机场评测</a>
+        <a href="../knowledge.html" style="background: #f1f5f9; color: #475569; padding: 6px 12px; border-radius: 15px; font-size: 0.8rem; text-decoration: none; font-weight: 600;">专线知识</a>
+        <a href="../knowledge.html" style="background: #f1f5f9; color: #475569; padding: 6px 12px; border-radius: 15px; font-size: 0.8rem; text-decoration: none; font-weight: 600;">客户端教程</a>
+        <a href="../knowledge.html" style="background: #f1f5f9; color: #475569; padding: 6px 12px; border-radius: 15px; font-size: 0.8rem; text-decoration: none; font-weight: 600;">AI工具连通</a>
+      </div>
+      <!-- INJECTED_SEO_END --></div></article>
+
+      <!-- Right side: Sidebar with TOC -->
+      <aside class="article-sidebar">
+        <!-- Table of Contents Widget -->
+        <div class="sidebar-widget sidebar-widget-sticky">
+          <h3 class="widget-title">目录</h3>
+          <ul class="toc-list">            <li class="toc-item"><a href="#heading-1">一、2026年科学上网新变局与寰宇云的定位</a></li>
+            <li class="toc-item"><a href="#heading-2">二、寰宇云基础设施与底层线路架构解析</a></li>
+            <li class="toc-item toc-h3"><a href="#heading-3">1. 什么是 IEPL 专线？它的优势在哪里？</a></li>
+            <li class="toc-item toc-h3"><a href="#heading-4">2. 传输协议支持：AnyTLS 与主流协议的融合</a></li>
+            <li class="toc-item"><a href="#heading-5">三、寰宇云最新套餐与价格资费详情</a></li>
+            <li class="toc-item"><a href="#heading-6">四、晚高峰速率与网络稳定性极限实测</a></li>
+            <li class="toc-item toc-h3"><a href="#heading-7">1. 核心地区节点速度表现汇总</a></li>
+            <li class="toc-item toc-h3"><a href="#heading-8">2. 晚高峰丢包率与网络吞吐实测数据表</a></li>
+            <li class="toc-item"><a href="#heading-9">五、流媒体与人工智能（AI）工具解锁能力测试报告</a></li>
+            <li class="toc-item toc-h3"><a href="#heading-10">1. 国际流媒体平台解锁实测</a></li>
+            <li class="toc-item toc-h3"><a href="#heading-11">2. 生产力 AI 工具（ChatGPT/Claude 等）解锁与使用建议</a></li>
+            <li class="toc-item"><a href="#heading-12">六、寰宇云机场优缺点客观横向对比</a></li>
+            <li class="toc-item toc-h3"><a href="#heading-13"> 寰宇云的突出的优点</a></li>
+            <li class="toc-item toc-h3"><a href="#heading-14"> 潜在的短板与风险提示</a></li>
+            <li class="toc-item"><a href="#heading-15">七、多平台客户端导入与保姆级配置指南</a></li>
+            <li class="toc-item toc-h3"><a href="#heading-16">1. Windows & macOS 用户（推荐使用 Clash Verge Rev）</a></li>
+            <li class="toc-item toc-h3"><a href="#heading-17">2. iOS (苹果手机/iPad) 用户（推荐使用 Shadowrocket / 小火箭）</a></li>
+            <li class="toc-item toc-h3"><a href="#heading-18">3. Android (安卓手机) 用户（推荐使用 v2rayNG 或 Clash Meta）</a></li>
+            <li class="toc-item"><a href="#heading-19">八、购买建议与测评终极总结</a></li>
+            <li class="toc-item toc-h3"><a href="#heading-20">💬 常见问题与技术解答 (FAQ)</a></li>
+            <li class="toc-item toc-h3"><a href="#heading-21">📖 更多跨境网络百科与相关文章推荐</a></li>
+</ul>
+        </div>
+        
+        <!-- Safety widget -->
+        <div class="sidebar-widget">
+          <h3 class="widget-title">防骗防跑路常识</h3>
+          <p style="font-size: 0.8rem; color: var(--text-muted); line-height: 1.6;">
+            1. 拒绝购买终身付费套餐。<br>
+            2. 使用多备用订阅防断联。<br>
+            3. 学术安全用网，不谈敏感内容。
+          </p>
+        </div>
+      </aside>
+      
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <span class="logo" style="margin-bottom: 8px;">TiziTop <span>拓扑</span></span>
+          <p class="footer-col-desc">
+            TiziTop 梯子拓扑是一个致力于普及网络安全、科学用网常识与辅助跨境学术研究的技术科普博客。
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <span class="footer-col-title">快速导航</span>
+          <div class="footer-links">
+            <a href="../index.html" class="footer-link">首页</a>
+            <a href="../recommend.html" class="footer-link">梯子推荐</a>
+            <a href="../knowledge.html" class="footer-link">科普指南</a>
+            <a href="../about.html" class="footer-link">关于我们</a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <span class="footer-col-title">推荐教程</span>
+          <div class="footer-links">
+            <a href="article.html" class="footer-link">Clash Verge 配置教程</a>
+            <a href="article.html" class="footer-link">小火箭二维码配置</a>
+            <a href="article.html" class="footer-link">什么是 IPLC 物理专线</a>
+            <a href="article.html" class="footer-link">ChatGPT 原生双 ISP 解锁</a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <span class="footer-col-title">科研学术免责声明</span>
+          <p class="footer-col-desc" style="font-size: 0.8rem; line-height: 1.5;">
+            本站内容仅用于软件工程开发、跨境学术文献检索、外贸商务交流等合法科研学习用途。请广大读者自觉遵守当地网络法律法规，切勿利用网络从事违法活动。
+          </p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>© 2026 TiziTop.com 梯子拓扑. 保留所有权利.</span>
+        <div class="footer-socials">
+          <a href="#" class="footer-social-link" aria-label="GitHub">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+          </a>
+          <a href="#" class="footer-social-link" aria-label="Telegram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="../js/main.js"></script>
+</body>
+</html>
