@@ -88,124 +88,116 @@
     </div>
   </header>
 
-  <!-- Hero Section (Re-layout to balanced Two-Column, No search bar) -->
+  <!-- Hero Section (Centered Layout) -->
   <section class="hero">
     <div class="container">
-      <div class="hero-grid">
+      <div class="hero-content">
+        <h1 class="hero-title">2026 机场推荐与<br>科学上网科普指南</h1>
+        <p class="hero-desc">
+          消除网络信息差，提供中立、客观的加速梯子实测。本站专注研究 IPLC 物理专线、BGP 中转网络、Clash 与 Shadowrocket 客户端配置以及安全用网防跑路常识，助您稳定访问海外学术与 AI 工具。
+        </p>
         
-        <!-- Left Column: Typographic intro and stats -->
-        <div class="hero-left">
-          <h1 class="hero-title">2026 机场推荐与<br>科学上网科普指南</h1>
-          <p class="hero-desc">
-            消除网络信息差，提供中立、客观的加速梯子实测。本站专注研究 IPLC 物理专线、BGP 中转网络、Clash 与 Shadowrocket 客户端配置以及安全用网防跑路常识，助您稳定访问海外学术与 AI 工具。
-          </p>
+        <!-- Hero Stats -->
+        <div class="hero-stats">
+          <div class="stat-item">
+            <span class="stat-num">120+</span>
+            <span class="stat-lbl">全球节点实测</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-num">99.9%</span>
+            <span class="stat-lbl">稳定在线率</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-num">10Gbps</span>
+            <span class="stat-lbl">专线网络带宽</span>
+          </div>
+        </div>
+        
+        <!-- Interactive Client Assistant Card Widget -->
+        <div class="client-assistant-card">
+          <div class="client-tabs">
+            <div class="client-tab-btn active" data-os="win">Windows</div>
+            <div class="client-tab-btn" data-os="mac">macOS</div>
+            <div class="client-tab-btn" data-os="ios">iOS (苹果)</div>
+            <div class="client-tab-btn" data-os="android">Android</div>
+          </div>
           
-          <!-- Hero Stats -->
-          <div class="hero-stats">
-            <div class="stat-item">
-              <span class="stat-num">120+</span>
-              <span class="stat-lbl">全球节点实测</span>
+          <!-- Windows Content -->
+          <div class="client-content active" id="client-content-win">
+            <div class="client-header">
+              <span class="client-name">Clash Verge Rev</span>
+              <span class="client-version">v2.0.2 推荐版</span>
             </div>
-            <div class="stat-item">
-              <span class="stat-num">99.9%</span>
-              <span class="stat-lbl">稳定在线率</span>
+            <p class="client-desc">支持 Clash Meta (Mihomo) 内核，完美兼容 VLESS Reality 与 Hysteria 2 协议。</p>
+            <div class="client-dl-links">
+              <a href="article.html" class="client-dl-link">
+                <span>查看详细配置教程</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+              </a>
+              <a href="#" class="client-dl-link">
+                <span>官方 GitHub 归档下载 (.exe)</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              </a>
             </div>
-            <div class="stat-item">
-              <span class="stat-num">10Gbps</span>
-              <span class="stat-lbl">专线网络带宽</span>
+          </div>
+          
+          <!-- macOS Content -->
+          <div class="client-content" id="client-content-mac">
+            <div class="client-header">
+              <span class="client-name">Stash for Mac</span>
+              <span class="client-version">v2.5.0 推荐版</span>
+            </div>
+            <p class="client-desc">macOS 平台上对分流规则及各类订阅脚本支持最好的 Clash 原生替代软件。</p>
+            <div class="client-dl-links">
+              <a href="article.html" class="client-dl-link">
+                <span>查看配置教程</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+              </a>
+              <a href="#" class="client-dl-link">
+                <span>官方 App Store 获取</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              </a>
+            </div>
+          </div>
+          
+          <!-- iOS Content -->
+          <div class="client-content" id="client-content-ios">
+            <div class="client-header">
+              <span class="client-name">Shadowrocket (小火箭)</span>
+              <span class="client-version">v2.2.39 推荐版</span>
+            </div>
+            <p class="client-desc">iOS 上最经典的节点代理工具。支持扫描二维码一键导入节点，规则分流完善。</p>
+            <div class="client-dl-links">
+              <a href="article.html" class="client-dl-link">
+                <span>查看导入配置教程</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+              </a>
+              <a href="about.html" class="client-dl-link">
+                <span>获取美区 AppleID 账号共享</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2c-5.52 0-10 4.48-10 10s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41a2 2 0 0 0-2-2 2 2 0 0 0-2 2H7a4 4 0 0 1 4-4 4 4 0 0 1 4 4 2 2 0 0 1-.93 1.75z"/></svg>
+              </a>
+            </div>
+          </div>
+          
+          <!-- Android Content -->
+          <div class="client-content" id="client-content-android">
+            <div class="client-header">
+              <span class="client-name">v2rayNG / Clash Meta</span>
+              <span class="client-version">v1.8.10 / v2.0.18</span>
+            </div>
+            <p class="client-desc">安卓端两大主流客户端，完美支持 Shadowsocks, Trojan 与 VLESS 协议。</p>
+            <div class="client-dl-links">
+              <a href="article.html" class="client-dl-link">
+                <span>查看配置教程</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+              </a>
+              <a href="#" class="client-dl-link">
+                <span>官方 Release 稳定版 .apk 下载</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              </a>
             </div>
           </div>
         </div>
-        
-        <!-- Right Column: Interactive Client Assistant Card Widget -->
-        <div class="hero-right">
-          <div class="client-assistant-card">
-            <div class="client-tabs">
-              <div class="client-tab-btn active" data-os="win">Windows</div>
-              <div class="client-tab-btn" data-os="mac">macOS</div>
-              <div class="client-tab-btn" data-os="ios">iOS (苹果)</div>
-              <div class="client-tab-btn" data-os="android">Android</div>
-            </div>
-            
-            <!-- Windows Content -->
-            <div class="client-content active" id="client-content-win">
-              <div class="client-header">
-                <span class="client-name">Clash Verge Rev</span>
-                <span class="client-version">v2.0.2 推荐版</span>
-              </div>
-              <p class="client-desc">支持 Clash Meta (Mihomo) 内核，完美兼容 VLESS Reality 与 Hysteria 2 协议。</p>
-              <div class="client-dl-links">
-                <a href="article.html" class="client-dl-link">
-                  <span>查看详细配置教程</span>
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
-                </a>
-                <a href="#" class="client-dl-link">
-                  <span>官方 GitHub 归档下载 (.exe)</span>
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                </a>
-              </div>
-            </div>
-            
-            <!-- macOS Content -->
-            <div class="client-content" id="client-content-mac">
-              <div class="client-header">
-                <span class="client-name">Stash for Mac</span>
-                <span class="client-version">v2.5.0 推荐版</span>
-              </div>
-              <p class="client-desc">macOS 平台上对分流规则及各类订阅脚本支持最好的 Clash 原生替代软件。</p>
-              <div class="client-dl-links">
-                <a href="article.html" class="client-dl-link">
-                  <span>查看配置教程</span>
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
-                </a>
-                <a href="#" class="client-dl-link">
-                  <span>官方 App Store 获取</span>
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                </a>
-              </div>
-            </div>
-            
-            <!-- iOS Content -->
-            <div class="client-content" id="client-content-ios">
-              <div class="client-header">
-                <span class="client-name">Shadowrocket (小火箭)</span>
-                <span class="client-version">v2.2.39 推荐版</span>
-              </div>
-              <p class="client-desc">iOS 上最经典的节点代理工具。支持扫描二维码一键导入节点，规则分流完善。</p>
-              <div class="client-dl-links">
-                <a href="article.html" class="client-dl-link">
-                  <span>查看导入配置教程</span>
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
-                </a>
-                <a href="about.html" class="client-dl-link">
-                  <span>获取美区 AppleID 账号共享</span>
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2c-5.52 0-10 4.48-10 10s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41a2 2 0 0 0-2-2 2 2 0 0 0-2 2H7a4 4 0 0 1 4-4 4 4 0 0 1 4 4 2 2 0 0 1-.93 1.75z"/></svg>
-                </a>
-              </div>
-            </div>
-            
-            <!-- Android Content -->
-            <div class="client-content" id="client-content-android">
-              <div class="client-header">
-                <span class="client-name">v2rayNG / Clash Meta</span>
-                <span class="client-version">v1.8.10 / v2.0.18</span>
-              </div>
-              <p class="client-desc">安卓端两大主流客户端，完美支持 Shadowsocks, Trojan 与 VLESS 协议。</p>
-              <div class="client-dl-links">
-                <a href="article.html" class="client-dl-link">
-                  <span>查看配置教程</span>
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
-                </a>
-                <a href="#" class="client-dl-link">
-                  <span>官方 Release 稳定版 .apk 下载</span>
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                </a>
-              </div>
-            </div>
-            
-          </div>
-        </div>
-        
       </div>
     </div>
   </section>
